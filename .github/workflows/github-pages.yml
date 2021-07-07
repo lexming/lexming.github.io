@@ -10,6 +10,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      # Use GitHub Actions' cache to shorten build times
+      - uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      # Build and deploy
       - uses: helaili/jekyll-action@v2
         with:
           token: ${{ secrets.GHACTION_TOKEN }}
+          target_branch: 'gh-pages'
