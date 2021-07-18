@@ -19,9 +19,8 @@ tagline: lexming's notebook about recurring subjects
 
 # used by seo meta and the atom feed
 description: >-
-  Incoherent set of notes with brief technical
-  information that was once useful in the past
-  and might safe some of my future time.
+  Incoherent set of notes with brief technical information
+  that was once useful and might save some of my future time.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://lexming.github.io'
