@@ -14,7 +14,8 @@ timezone: Europe/Brussels
 # --------------------------
 title: nth loop
 
-tagline: notes about recurring subjects  # it will display as the sub-title
+# sub-title
+tagline: lexming's notebook about recurring subjects
 
 # used by seo meta and the atom feed
 description: >-
