@@ -2,26 +2,24 @@
 title: "NFS mount in Ubuntu Core 18"
 date: 2021-08-15 12:00
 categories: linux
-tags: ubuntu, snap
+tags: ubuntu snap
 ---
 
-[Ubuntu Core](https://ubuntu.com/core) is based on [snaps](https://snapcraft.io/), which means that all software (even the system kernel!) has to be provided by a snap container. The main consequence of this design is that the system lacks many common tools found in other Linux distros (*eg* `wget`).
-
-This renders simple tasks not trivial, such as mounting a NFS volume.
+[Ubuntu Core](https://ubuntu.com/core) is based on [snaps](https://snapcraft.io/), which means that all software (even the system kernel!) has to be provided by a snap container. The main consequence of this design is that the system lacks many tools commonly found in other Linux distros (*eg* `wget`), rendering a simple task such as mounting a NFS volume to be not trivial.
 
 ## The good, the bad and the ugly
 
-1. Real solution: use Ubuntu Server instead of Ubuntu Core, the base of the system is the traditional Ubuntu with its common array of tools and it is possible to use snaps as well.
-2. If making snaps is not an issue: make your own snap for `nfs-common`, the kernel already provides support for NFS. The only missing pieces are the NFS tools in userland.
+1. Real solution: use Ubuntu Server instead of Ubuntu Core if you need NFS mounts, the base of the system is the traditional Ubuntu with its common array of tools and it is possible to use snaps as well.
+2. Time sink solution: make your own snap for `nfs-common`, the kernel in Ubuntu Core already provides support for NFS. The only missing pieces are the NFS tools in userland.
 3. Quick solution: use [BusyBox](https://www.busybox.net/), it can be easily side-loaded into the system and provides support for NFS.
 
 ## Install BusyBox into Ubuntu Core 18
 
-The easiest approach is to download BusyBox into some local machine and transfer the tarball to the Ubuntu Core system with `ssh`. However, I'll show a solution that only relies on the Ubuntu Core system
+The easiest approach is to download BusyBox into some local machine and transfer the tarball to the Ubuntu Core system with `ssh`. However, in the following I'll show a solution that only relies on the Ubuntu Core system itself:
 
 1. Install the [classic snap](https://github.com/snapcore/classic-snap)
 
-    This snap allows to run a classic Ubuntu environment that includes `apt`. Beware that it was released for Ubuntu Core 16 and it has not been updated for v18. Nonetheless, we will just use it to download BusyBox into the system and unistall it
+    The classic snap allows to run a classic Ubuntu environment that includes `apt`. Beware that it was released for Ubuntu Core 16 and it has not been updated for v18. Nonetheless, we will just use it to download BusyBox into the system and unistall it afterwards
 
     ```console
     $ snap install classic --edge --devmode
@@ -42,7 +40,7 @@ The easiest approach is to download BusyBox into some local machine and transfer
 
 3. Download BusyBox
 
-    Since my system runs on a Raspberry Pi 4 rev B, I took the build for `armv8l`. Choose the one most appropriate for your system from https://www.busybox.net/downloads/binaries/
+    Since my system runs on a Raspberry Pi 4 rev B, I took the build for `armv8l`. Choose the one most appropriate for your system from [busybox.net](https://www.busybox.net/downloads/binaries/).
 
     ```console
     (classic) $ wget https://www.busybox.net/downloads/binaries/1.31.0-defconfig-multiarch-musl/busybox-armv8l
@@ -92,7 +90,7 @@ WantedBy=remote-fs.target
 
 # Use the NFS volume in NextCloud
 
-At this point, you might have realized already that I carried out this process in a [NextCloud](https://nextcloud.com/) instance. Here are the steps to use the NFS volume as the data storage of a NextCloud snap
+At this point, you might have already realized that I carried out this process in a [NextCloud](https://nextcloud.com/) instance. Here are the steps to use the NFS volume as the data storage of a NextCloud snap:
 
 1. Enable access to `/media` to NextCloud snap
 
@@ -100,8 +98,6 @@ At this point, you might have realized already that I carried out this process i
     $ sudo snap connect nextcloud:removable-media
     ```
 
-2. Change the data directory in NextCloud
-
-    Follow the steps in the [NextCloud Wiki](https://github.com/nextcloud-snap/nextcloud-snap/wiki/Change-data-directory-to-use-another-disk-partition)
+2. Change the data directory in NextCloud by following the steps in the [NextCloud Wiki](https://github.com/nextcloud-snap/nextcloud-snap/wiki/Change-data-directory-to-use-another-disk-partition)
 
 Beware that the folder in `/media` is not persistent across reboots.
