@@ -56,9 +56,9 @@ Btrfs provides a tool called [btrfs-scrub](https://btrfs.wiki.kernel.org/index.p
 
     The time of next execution can be checked with the command `systemctl list-timers --all`
 
-# Manual scrub of the drive
+# Manual raw scrub of the drive
 
-Alternatively, if any underlying drive has faulty blocks, those can be identifies with `badblock` and manually evicted with `hdparm`:
+Alternatively, if any underlying drive has faulty blocks, those can be identifies with `badblocks` and manually evicted with `hdparm`:
 
 1. Tests from S.M.A.R.T.
 
@@ -78,7 +78,7 @@ Alternatively, if any underlying drive has faulty blocks, those can be identifie
 
 2. Identify bad blocks
 
-    Check the block size of the drive with `fdisk -l` and execute `badblocks` to identify all faulty blocks in the disk. For instance, our `sda` drive with blocks of 512 bytes
+    Check the block size of the drive with `fdisk -l` and execute `badblocks` to identify all faulty blocks in the disk. For instance, in our `sda` drive with blocks of 512 bytes
 
     ```console
     $ badblocks -b 512 /dev/sda
