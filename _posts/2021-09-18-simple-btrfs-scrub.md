@@ -2,7 +2,7 @@
 title: "Scrubbing a Btrfs filesystem"
 date: 2021-09-18 12:00
 categories: linux
-tags: debian
+tags: debian storage
 ---
 
 Btrfs provides a tool called [btrfs-scrub](https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-scrub) that serves to scrub the filesystem. It can automatically read all data and metadata blocks, verify checksums and repair corrupted blocks if there’s a correct copy available.

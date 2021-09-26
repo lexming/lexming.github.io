@@ -2,7 +2,7 @@
 title: "NFS mount in Ubuntu Core 18"
 date: 2021-08-15 12:00
 categories: linux
-tags: ubuntu snap
+tags: ubuntu snap nextcloud storage
 ---
 
 [Ubuntu Core](https://ubuntu.com/core) is based on [snaps](https://snapcraft.io/), which means that all software (even the system kernel!) has to be provided by a snap container. The main consequence of this design is that the system lacks many tools commonly found in other Linux distros (*eg* `wget`), rendering a simple task such as mounting a NFS volume to be not trivial.
