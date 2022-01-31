@@ -17,3 +17,6 @@ gem "webrick", "~> 1.7"
 
 # Jekyll theme
 gem "jekyll-theme-chirpy", "~> 4.3"
+
+# Emojis
+gem "jemoji"
