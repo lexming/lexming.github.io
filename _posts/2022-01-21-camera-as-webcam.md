@@ -54,10 +54,10 @@ Resolution.
 One limitation of the Virtual Camera in OBS is that it only contains the video
 stream. If you want to use the audio stream from OBS in your video call as well,
 you will need to redirect its audio into a virtual mic. This can be done with
-PulseAudio by creating a `null-sink` device as virtual speaker and **remapping
-its monitor to a new audio source** as virtual mic. These two virtual audio
-devices allow to redirect the audio from any application to any other
-application.
+[PulseAudio](https://www.freedesktop.org/wiki/Software/PulseAudio/) by creating
+a `null-sink` device as virtual speaker and **remapping its monitor to a new
+audio source** as virtual mic. These two virtual audio devices allow to redirect
+the audio from any application to any other application.
 
 1. Create virtual speaker
 
