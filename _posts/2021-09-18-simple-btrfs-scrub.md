@@ -7,7 +7,7 @@ tags: debian storage
 
 Btrfs provides a tool called [btrfs-scrub](https://btrfs.wiki.kernel.org/index.php/Manpage/btrfs-scrub) that serves to scrub the filesystem. It can automatically read all data and metadata blocks, verify checksums and repair corrupted blocks if there’s a correct copy available.
 
-# Periodic scrubbing
+## Periodic scrubbing
 
 1. Install [btrfsmaintenance](https://github.com/kdave/btrfsmaintenance)
 
@@ -56,7 +56,7 @@ Btrfs provides a tool called [btrfs-scrub](https://btrfs.wiki.kernel.org/index.p
 
     The time of next execution can be checked with the command `systemctl list-timers --all`
 
-# Manual raw scrub of the drive
+## Manual raw scrub of the drive
 
 Alternatively, if any underlying drive has faulty blocks, those can be identifies with `badblocks` and manually evicted with `hdparm`:
 

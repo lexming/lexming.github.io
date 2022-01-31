@@ -5,7 +5,7 @@ categories: linux
 tags: fedora audio video
 ---
 
-# Camera video as USB webcam
+## Camera video as USB webcam
 
 Some modern camera models can be directly connected to the computer through USB
 and be detected as a webcam. That's the easiest setup, but beware that this mode
@@ -22,7 +22,7 @@ Link](https://github.com/AdamGleave/elgato-camlink-workaround), so any Linux
 distribution with a recent kernel (or backported patches) should work with this
 device out of the box.
 
-# Virtual webcam in OBS Studio
+## Virtual webcam in OBS Studio
 
 OBS Studio is very useful to mix audio and video streams in real time. For
 instance, I use it to sync the audio of my mic or capture my computer desktop
@@ -50,7 +50,7 @@ device (*e.g.* MS Teams accepts 1280x720 max). In such a case, set the required
 resolution of the output stream in OBS in Settings > Video > Output (Scaled)
 Resolution.
 
-# Virtual microphone
+## Virtual microphone
 
 One limitation of the Virtual Camera in OBS is that it only contains the video
 stream. If you want to use the audio stream from OBS in your video call as well,
@@ -76,7 +76,7 @@ The advantage of this approach is that it does not depend on any specific audio
 device. The previous commands should work in any system with PulseAudio.
 
 
-# Redirect audio in OBS to virtual speaker
+## Redirect audio in OBS to virtual speaker
 
 1. Set the monitoring device of your stream in OBS to *Monitor of Virtual Speaker*.
 This setting is located in Settings > Audio > Advanced > Monitoring device.
