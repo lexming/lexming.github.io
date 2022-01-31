@@ -5,13 +5,13 @@ categories: linux
 tags: fedora audio video
 ---
 
-## Camera video as USB webcam
-
 Some modern camera models can be directly connected to the computer through USB
 and be detected as a webcam. That's the easiest setup, but beware that this mode
 of operation might need special programs/drivers with no support for Linux. The
 more general approach is to use some video capture device that can take the HDMI
 output of the camera, stream it through USB and present itself as a USB webcam.
+
+## Camera conversion to USB webcam
 
 In my case, the camera is a Fujifilm X-E3 which can send clean video through its
 HDMI output and I use Elgato Cam Link 4K to *convert* the video signal to USB.
