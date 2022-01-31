@@ -5,21 +5,22 @@ categories: linux
 tags: fedora audio video
 ---
 
-# Connecting the camera
+# Camera video as USB webcam
 
 Some modern camera models can be directly connected to the computer through USB
 and be detected as a webcam. That's the easiest setup, but beware that this mode
 of operation might need special programs/drivers with no support for Linux. The
-more common approach is to use the HDMI video output of the camera and connect
-it to a device that converts the signal to USB.
+more general approach is to use some video capture device that can take the HDMI
+output of the camera, stream it through USB and present itself as a USB webcam.
 
-In my case, the camera is a Fujifilm X-E3 with HDMI video output and I use
-Elgato Cam Link 4K to convert the signal to USB. Once the camera is connected to
-the computer, it is recognized as any regular USB webcam by the open source
-`uvcvideo` kernel module. Linux kernel v5.14 fixed an [issue with the reported
-pixel format by the Cam Link](https://github.com/AdamGleave/elgato-camlink-workaround),
-so any Linux distribution with a recent kernel (or backported patches) should
-work with this device out of the box.
+In my case, the camera is a Fujifilm X-E3 which can send clean video through its
+HDMI output and I use Elgato Cam Link 4K to *convert* the video signal to USB.
+Once the camera is connected to the computer, it is recognized as any regular
+USB webcam thanks to the open source `uvcvideo` kernel module. Linux kernel
+v5.14 fixed an [issue with the reported pixel format by the Cam
+Link](https://github.com/AdamGleave/elgato-camlink-workaround), so any Linux
+distribution with a recent kernel (or backported patches) should work with this
+device out of the box.
 
 # Virtual webcam in OBS Studio
 
