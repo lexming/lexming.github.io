@@ -1,8 +1,8 @@
 ---
 title: "Make systemd service wait for mount"
 date: 2021-11-18 16:00
-categories: linux
-tags: debian storage nextcloud
+categories: nextcloud
+tags: debian storage
 ---
 
 Services in [systemd](https://systemd.io/) can be set to wait on the
