@@ -46,6 +46,7 @@ Btrfs provides a tool called [btrfs-scrub](https://btrfs.wiki.kernel.org/index.p
     [Install]
     WantedBy=timers.target
     ```
+    {: file="/etc/systemd/system/btrfs-scrub.timer" }
 
 4. Start the scrubbing timer
 

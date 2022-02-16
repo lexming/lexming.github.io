@@ -25,7 +25,7 @@ for the folder with remote log files that is mounted with NFS:
 
 1. Edit the unit file
 
-    ```shell
+    ```console
     $ sudo systemctl edit fail2ban.service
     ```
 

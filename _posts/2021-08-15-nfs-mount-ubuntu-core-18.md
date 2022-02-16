@@ -71,7 +71,7 @@ We can create a simple systemd service to emulate the corresponding systemd unit
 
 ```
 [Unit]
-Description=Mount the NFS cloud volume
+Description=Mount NFS volume with Nextcloud media
 Wants=network-online.target
 After=network-online.target
 
@@ -85,12 +85,15 @@ ExecStop=/root/busybox-armv8l umount /media/nextcloud
 [Install]
 WantedBy=remote-fs.target
 ```
+{: file="/etc/systemd/system/nextcloud-nfs-mount.service" }
 
 *Note*: `ExecStartPre` ensures that the mount point for the NFS volume exists on service start.
 
 # Use the NFS volume in NextCloud
 
-At this point, you might have already realized that I carried out this process in a [NextCloud](https://nextcloud.com/) instance. Here are the steps to use the NFS volume as the data storage of a NextCloud snap:
+At this point, you can see that I carried out this process in a
+[NextCloud](https://nextcloud.com/) instance. Here are the steps to use the NFS
+volume as the data storage of a NextCloud snap:
 
 1. Enable access to `/media` to NextCloud snap
 
