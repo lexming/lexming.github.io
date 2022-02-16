@@ -16,8 +16,9 @@ with other users in your Nextcloud -
 The simple workaround to this limitation is directly sharing the `.sqd` file of
 the note in Nextcloud with any other user.
 
-:warning: This note sharing method can potentially **corrupt the note** file (or
-lose data in the note) if multiple users edit the same note at the same time.
+:warning: This sharing method can cause **data loss in the shared note** if
+multiple users edit the same note at the same time. In the case of simultaneous
+edits, the last user syncing will overwrite any new changes from other users.
 
 1. Locate the `.sqd` note file in your Carnet folder in Nextcloud
    (`Documents/QuickNote` by default)
