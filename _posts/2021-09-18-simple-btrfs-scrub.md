@@ -14,21 +14,31 @@ correct copy available.
 
 1. Install [btrfsmaintenance](https://github.com/kdave/btrfsmaintenance)
 
-    `btrfs-scrub` is provided by the `btrfsmaintenance` package, which is a project with extra maintenance tools developed by the btrfs maintainer and not found in `btrfs-progs`. This article focuses on the scrubber but there is also a defrag.
+    `btrfs-scrub` is provided by the `btrfsmaintenance` package, which is a
+project with extra maintenance tools developed by the btrfs maintainer and not
+found in `btrfs-progs`. This article focuses on the scrubber but there is also a
+defrag.
 
     ```console
     $ apt install btrfsmaintenance
     ```
 
-    Once installed, all provided services and timers should be disabled by default.
+    Once installed, all provided services and timers should be disabled by
+default.
 
 2. Edit the configuration
 
-    The configuration settings for all tools in `btrfsmaintenance` are centralized in `/etc/default/btrfsmaintenance` in Debian. Set the `BTRFS_SCRUB_*` variables in it as needed.
+    The configuration settings for all tools in `btrfsmaintenance` are
+centralized in `/etc/default/btrfsmaintenance` in Debian. Set the
+`BTRFS_SCRUB_*` variables in it as needed.
 
 3. Simplify the timer for `btrfs-scrub`
 
-    By default, the timers are controlled through the `btrfsmaintenance-refresh.service`, which reads `$BTRFS_SCRUB_PERIOD` from the main configuration file. However, I prefer to simplify this setup by directly configuring the periodicty in the [systemd timer](https://www.freedesktop.org/software/systemd/man/systemd.timer.html) for `btrfs-scrub`
+    By default, the timers are controlled through the `btrfsmaintenance-refresh.service`,
+which reads `$BTRFS_SCRUB_PERIOD` from the main configuration file. However, I
+prefer to simplify this setup by directly configuring the periodicity in the
+[systemd timer](https://www.freedesktop.org/software/systemd/man/systemd.timer.html)
+for `btrfs-scrub`
 
     ```console
     $ systemctl edit --full btrfs-scrub.timer
@@ -58,15 +68,19 @@ correct copy available.
     $ systemctl start btrfs-scrub.timer
     ```
 
-    The time of next execution can be checked with the command `systemctl list-timers --all`
+    The time of next execution can be checked with the command `systemctl
+list-timers --all`
 
 ## Manual raw scrub of the drive
 
-Alternatively, if any underlying drive has faulty blocks, those can be identifies with `badblocks` and manually evicted with `hdparm`:
+Alternatively, if any underlying drive has faulty blocks, those can be
+identifies with `badblocks` and manually evicted with `hdparm`:
 
 1. Tests from S.M.A.R.T.
 
-    Check the test reports from the SMART system in the drive to verify its health status. For instance, the `sda` drive in our affected system reports a read failure
+    Check the test reports from the SMART system in the drive to verify its
+health status. For instance, the `sda` drive in our affected system reports a
+read failure
 
     ```console
     $ smartctl -l selftest /dev/sda
@@ -82,7 +96,9 @@ Alternatively, if any underlying drive has faulty blocks, those can be identifie
 
 2. Identify bad blocks
 
-    Check the block size of the drive with `fdisk -l` and execute `badblocks` to identify all faulty blocks in the disk. For instance, in our `sda` drive with blocks of 512 bytes
+    Check the block size of the drive with `fdisk -l` and execute `badblocks` to
+identify all faulty blocks in the disk. For instance, in our `sda` drive with
+blocks of 512 bytes
 
     ```console
     $ badblocks -b 512 /dev/sda
@@ -98,7 +114,10 @@ Alternatively, if any underlying drive has faulty blocks, those can be identifie
 
 4. Repair bad blocks
 
-    **Warning! This step will not recover any data**. The faulty blocks will be disabled from the drive and it will (probably) continue to function with the remaining healthy blocks. The filesystem will only be able to recover the lost data if there is redundancy.
+    **Warning! This step will not recover any data**. The faulty blocks will be
+disabled from the drive and it will (probably) continue to function with the
+remaining healthy blocks. The filesystem will only be able to recover the lost
+data if there is redundancy.
 
     ```console
     $ hdparm --yes-i-know-what-i-am-doing --repair-sector 4409 /dev/sda
