@@ -23,7 +23,9 @@ edits, the last user syncing will overwrite any new changes from other users.
 1. Locate the `.sqd` note file in your Carnet folder in Nextcloud
    (`Documents/QuickNote` by default)
 2. Share it with any other user in Nextcloud as usual
-3. The receiving user has to manually move the new `.sqd` file in their Nextcloud home folder into their Carnet folder (`Documents/QuickNote` by default)
+3. The receiving user has to manually move the new `.sqd` file in their
+   Nextcloud home folder into their Carnet folder (`Documents/QuickNote` by
+   default)
 4. Carnet will automatically detect the new shared note and show it in the
    application interface
 
