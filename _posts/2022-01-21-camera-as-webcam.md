@@ -24,9 +24,9 @@ device out of the box.
 
 ## Virtual webcam in OBS Studio
 
-OBS Studio is very useful to mix audio and video streams in real time. For
-instance, I use it to sync the audio of my mic or capture my computer desktop
-overlaying my cam in a corner of the stream.
+[OBS Studio](https://obsproject.com/) is very useful to mix audio and video
+streams in real time. For instance, I use it to sync the audio of my mic or
+capture my computer desktop overlaying my cam in a corner of the stream.
 
 Since version 26.1 (Dec 2020), OBS natively provides a Virtual Camera output,
 which allows to catch its stream from any video chat application. OBS itself
