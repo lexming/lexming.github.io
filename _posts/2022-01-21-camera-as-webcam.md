@@ -24,9 +24,9 @@ device out of the box.
 
 ## Virtual webcam in OBS Studio
 
-OBS Studio is very useful to mix audio and video streams in real time. For
-instance, I use it to sync the audio of my mic or capture my computer desktop
-overlaying my cam in a corner of the stream.
+[OBS Studio](https://obsproject.com/) is very useful to mix audio and video
+streams in real time. For instance, I use it to sync the audio of my mic or
+capture my computer desktop overlaying my cam in a corner of the stream.
 
 Since version 26.1 (Dec 2020), OBS natively provides a Virtual Camera output,
 which allows to catch its stream from any video chat application. OBS itself
@@ -34,8 +34,14 @@ will appear as a new webcam device. Enabling this option requires the kernel
 module [v4l2loopback](https://github.com/umlaeute/v4l2loopback), which might not
 be installed by default.
 
-In Fedora 35, [OBS Studio v26.1+ is already available as a
-flatpak](https://flathub.org/apps/details/com.obsproject.Studio) and you can
+In Fedora 35, [OBS Studio v26.1+ is available as a flatpak](https://flathub.org/apps/details/com.obsproject.Studio) 
+
+```console
+$ sudo flatpak install flathub com.obsproject.Studio
+```
+
+The kernel module v4l2loopback is available in the [RPMFusion](https://rpmfusion.org/)
+repository. Once [RPM Fusion is enabled in your system](https://rpmfusion.org/Configuration),
 install v4l2loopback with the following command:
 
 ```console
