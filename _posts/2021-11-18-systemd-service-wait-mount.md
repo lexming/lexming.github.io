@@ -38,7 +38,7 @@ for the folder with remote log files that is mounted with NFS:
     ```
     {: file="/etc/systemd/system/fail2ban.service.d/override.conf" }
 
-
-:warning: systemd will mount all mounts needed to access the path in
+> :warning: systemd will mount all mounts needed to access the path in
 `RequiresMountsFor`, even those with `noauto`.
+{: .prompt-warning }
 
