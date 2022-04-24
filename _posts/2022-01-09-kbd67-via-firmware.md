@@ -22,10 +22,10 @@ firmware for this keyboard. So, let's upgrade it:
 
     * The file for KBDv2 is `kbdfans_kbd67_rev2_via.hex`
 
-2. Flash VIA firmware to KDB67v2 with [QMK
-   Toolbox](https://github.com/qmk/qmk_toolbox)
+2. Flash VIA firmware to KDB67v2 with [QMK Toolbox](https://github.com/qmk/qmk_toolbox)
 
-    :warning: QMK Toolbox only works on **Windows** or **Mac** systems
+    > QMK Toolbox only works on **Windows** or **Mac** systems
+    {: .prompt-warning }
 
     1. (Re-)Connect the keyboard in bootloader mode by pressing `Space + B`
        while you plug its USB cable

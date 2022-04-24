@@ -129,4 +129,5 @@ snap:
 2. Change the data directory in NextCloud by following the steps in the
    [NextCloud Wiki](https://github.com/nextcloud-snap/nextcloud-snap/wiki/Change-data-directory-to-use-another-disk-partition)
 
-:warning: Folders in `/media` are not persistent across reboots.
+> Folders in `/media` are not persistent across reboots.
+{: .prompt-warning }
