@@ -14,7 +14,7 @@ gem "jekyll", "~> 4.2", ">= 4.2.2"
 gem "webrick", "~> 1.7"  # see issue jekyll/jekyll#8523
 
 # Jekyll theme
-gem "jekyll-theme-chirpy", "~> 5.1", ">= 5.1.0"
+gem "jekyll-theme-chirpy", "~> 5.2", ">= 5.2.1"
 
 # Emojis
 gem "jemoji"
