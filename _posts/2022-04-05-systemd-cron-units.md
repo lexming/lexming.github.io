@@ -5,7 +5,14 @@ categories: linux
 tags: systemd
 ---
 
-[Systemd](https://systemd.io/) has timers, which can be used as an alternative to [cron](https://en.wikipedia.org/wiki/Cron) to schedule jobs. The timers infrastructure is quite powerful and is described in detail elsewhere[⁽¹⁾](https://fedoramagazine.org/systemd-timers-for-scheduling-tasks/)[⁽²⁾](https://wiki.archlinux.org/title/Systemd/Timers). The following shows common timer examples to execute an arbitrary service unit *myunit.service* and basic commands to control the timers.
+[Systemd](https://systemd.io/) has timers, which can be used as an alternative
+to [cron](https://en.wikipedia.org/wiki/Cron) to schedule jobs. The timers
+infrastructure is quite powerful and is described in detail elsewhere
+[⁽¹⁾](https://fedoramagazine.org/systemd-timers-for-scheduling-tasks/)
+[⁽²⁾](https://wiki.archlinux.org/title/Systemd/Timers).
+
+The following shows common timer examples to execute an arbitrary service unit
+*myunit.service* and basic commands to control the timers.
 
 ## Monotonic timer
 
@@ -59,5 +66,6 @@ Timers can be added as a regular user or system-wide as root.
     $ systemctl list-timers
     ```
 
->Timers can be manually triggered with the command `systemctl start myunit.timer`.
+>Timers can be manually triggered with the command `systemctl start
+>myunit.timer`.
 {: .prompt-info }
