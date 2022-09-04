@@ -1,5 +1,5 @@
 ---
-title: "Bootstrap a headless Raspberry Pi"
+title: "Bootstrapping a headless Raspberry Pi"
 date: 2022-07-09 20:00
 categories: linux
 tags: debian
