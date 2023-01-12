@@ -10,11 +10,10 @@ source "https://rubygems.org"
 #
 # This will help ensure the proper Jekyll version is running.
 # Happy Jekylling!
-gem "jekyll", "~> 4.2", ">= 4.2.2"
-gem "webrick", "~> 1.7"  # see issue jekyll/jekyll#8523
+gem "jekyll", "~> 4.3", ">= 4.3.1"
 
 # Jekyll theme
-gem "jekyll-theme-chirpy", "~> 5.2", ">= 5.2.1"
+gem "jekyll-theme-chirpy", "~> 5.4", ">= 5.4.0"
 
 # Emojis
 gem "jemoji"
