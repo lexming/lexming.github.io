@@ -1,6 +1,6 @@
 # lexming.github.io
 
-Personal blog build with [Jekyll](https://jekyllrb.com/) and the theme [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy).
+Personal blog built with [Jekyll](https://jekyllrb.com/) and the [Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy) theme.
 
 ## Quick bootstrap
 
