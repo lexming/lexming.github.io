@@ -12,6 +12,10 @@ source "https://rubygems.org"
 # Happy Jekylling!
 gem "jekyll", "~> 4.3", ">= 4.3.1"
 
+# Lock jekyll-sass-converter to v2
+# see issue https://github.com/helaili/jekyll-action/issues/150
+gem "jekyll-sass-converter", "~> 2.0"
+
 # Jekyll theme
 gem "jekyll-theme-chirpy", "~> 5.4", ">= 5.4.0"
 
