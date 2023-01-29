@@ -40,18 +40,47 @@ to the Raspberry Pis in my network.
     ```
     {: file="/etc/ssh/sshd_config" }
 
-## Disable the radios
+## Disable radios
 
 Wi-Fi and Bluetooth might not be necessary if your Raspberry Pi is connected
 with Ethernet.
 
-1. Edit `/boot/config.txt` in Raspberry Pi OS (Raspbian) or `/boot/firmware/config.txt`
-   in Ubuntu and append the following settings to disable Wi-Fi and Bluetooth
+> The boot configuration file is located at `/boot/config.txt` in Raspberry Pi
+> OS (Raspbian) or `/boot/firmware/config.txt` in Ubuntu.
+{: .prompt-info }
+
+1. Append the following settings to the boot configuration file to disable
+   Wi-Fi and Bluetooth
     ```
-    [pi4]
-    # Disable all radios
     dtoverlay=disable-wifi
     dtoverlay=disable-bt
+    ```
+    {: file="/boot/config.txt" }
+
+## Disable audio/video
+
+Audio and video are usually not needed on a headless system. On-board audio,
+HDMI output and video acceleration can be disabled with boot configuration
+options.
+
+1. Append the following settings to the boot configuration file to disable
+   the on-board audio (HDMI audio will still work if the video core driver is
+   loaded)
+    ```
+    dtparam=audio=off
+    ```
+    {: file="/boot/config.txt" }
+
+2. Remove from the boot configuration file any line loading the video driver
+   overlay to disable video acceleration and both video and audio signals over
+   HDMI. For instance, the overlay for the video driver for the Raspberry Pi 4
+   is loaded with `dtoverlay=vc4-kms-v3d`.
+
+3. Append the following settings to the boot configuration file to switch off
+   the HDMI ports and disable any framebuffers on boot:
+    ```
+    hdmi_ignore_hotplug=1
+    max_framebuffers=0
     ```
     {: file="/boot/config.txt" }
 
@@ -61,12 +90,9 @@ The Raspberry Pi board has a [watchdog timer](https://en.wikipedia.org/wiki/Watc
 This can be used to automatically reboot the system in case of problems. For
 instance, if the system hangs due to out-of-memory errors.
 
-1. Edit `/boot/config.txt` in Raspberry Pi OS (Raspbian) or
-   `/boot/firmware/config.txt` in Ubuntu and append the following to enable the
+1. Append the following settings to the boot configuration file to enable the
    watchdog timer
     ```
-    [pi4]
-    # Enable watchdog
     dtparam=watchdog=on
     ```
     {: file="/boot/config.txt" }
