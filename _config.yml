@@ -20,12 +20,12 @@ timezone: Europe/Brussels
 title: nth loop
 
 # sub-title
-tagline: lexming's notebook about recurring subjects
+tagline: lexming's notebook about recurring technical adventures with Linux
 
 # used by seo meta and the atom feed
 description: >-
   Incoherent set of notes with brief technical information
-  that was once useful and might save some of my future time.
+  that has been useful once and might save me some time in the future.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://lexming.github.io'
