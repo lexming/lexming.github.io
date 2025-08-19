@@ -1,20 +1,10 @@
-# hidden files
-.*
-!.git*
-!.editorconfig
-!.nojekyll
-!.husky
-!.commitlintrc.json
-!.versionrc.json
-!.stylelintrc.json
-
-# bundler cache
-_site
-vendor
-
-# rubygem
-*.gem
-
-# npm dependencies
+.gitignore
+.obsidian
+.quartz-cache
+.replit
 node_modules
-package-lock.json
+private/
+prof
+public
+replit.nix
+tsconfig.tsbuildinfo
