@@ -1,8 +1,8 @@
 ---
 title: "Linker error: multiple definition of symbol"
-date: 2022-02-24 17:00
-categories: easybuild
-tags: linker
+date: 2022-02-24
+tags:
+- linker
 ---
 
 I got the following error from the linker `ld.gold` while linking `libsumo` in

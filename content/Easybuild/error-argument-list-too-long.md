@@ -1,8 +1,8 @@
 ---
 title: "Make error: Argument list too long"
-date: 2022-10-27 18:00
-categories: easybuild
-tags: make
+date: 2022-10-27
+tags:
+- make
 ---
 
 I got the following error compiling [nodejs](https://nodejs.org) v16.15.1 with [GCC](https://gcc.gnu.org/) v10.3.0:

@@ -1,8 +1,10 @@
 ---
 title: "Scrubbing a Btrfs filesystem"
-date: 2021-09-18 12:00
-categories: linux
-tags: debian storage systemd
+date: 2021-09-18
+tags:
+- debian
+- storage
+- systemd
 ---
 
 Btrfs provides a tool called [btrfs-scrub](https://btrfs.readthedocs.io/en/latest/btrfs-scrub.html)

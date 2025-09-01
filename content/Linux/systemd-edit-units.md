@@ -1,8 +1,8 @@
 ---
 title: "Edit systemd units"
-date: 2022-06-15 18:00
-categories: linux
-tags: systemd
+date: 2022-06-15
+tags:
+- systemd
 ---
 
 Unit files in [systemd](https://systemd.io/) can be mended without modifying

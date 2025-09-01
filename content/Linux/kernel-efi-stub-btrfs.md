@@ -1,8 +1,8 @@
 ---
 title: "Kernel EFI stub boot with Btrfs root"
-date: 2022-07-18 20:00
-categories: linux
-tags: gentoo
+date: 2022-07-18
+tags:
+- gentoo
 ---
 
 We can directly boot into the Linux kernel without any secondary bootloader

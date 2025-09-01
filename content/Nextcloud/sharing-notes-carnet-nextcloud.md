@@ -1,7 +1,6 @@
 ---
 title: "Sharing notes with Carnet and Nextcloud"
-date: 2022-02-09 12:00
-categories: nextcloud
+date: 2022-02-09
 ---
 
 [Carnet](https://getcarnet.app/) is an open-source note taking app with a lean

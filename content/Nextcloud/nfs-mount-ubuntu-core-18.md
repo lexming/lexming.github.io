@@ -1,8 +1,9 @@
 ---
 title: "NFS mount in Ubuntu Core 18"
-date: 2021-08-15 12:00
-categories: nextcloud
-tags: ubuntu snap storage
+date: 2021-08-15
+tags:
+- ubuntu
+- storage
 ---
 
 [Ubuntu Core](https://ubuntu.com/core) is based on

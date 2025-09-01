@@ -1,8 +1,10 @@
 ---
 title: "Mirrorless camera as webcam in Linux"
-date: 2022-01-22 16:00
-categories: linux
-tags: fedora audio video
+date: 2022-01-22
+tags:
+- fedora
+- audio
+- video
 ---
 
 Some modern camera models can be directly connected to the computer through USB

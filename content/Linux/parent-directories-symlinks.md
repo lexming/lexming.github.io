@@ -1,8 +1,8 @@
 ---
 title: "Navigating through the parent directory of symlinks in bash"
-date: 2022-10-16 12:00
-categories: linux
-tags: bash
+date: 2022-10-16
+tags:
+- bash
 ---
 
 Changing directory `cd` to a [symlinked](https://en.wikipedia.org/wiki/Symbolic_link)

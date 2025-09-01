@@ -1,8 +1,8 @@
 ---
 title: "Git repos in Nextcloud"
-date: 2022-05-08 20:00
-categories: nextcloud
-tags: git
+date: 2022-05-08
+tags:
+- git
 ---
 
 The usual solution to put [git repositories on a remote server is to transfer

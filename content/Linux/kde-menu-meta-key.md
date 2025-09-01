@@ -1,8 +1,8 @@
 ---
-title: "KDE Konsole padding"
-date: 2021-12-19 18:00
-categories: linux
-tags: kde
+title: "KDE start menu"
+date: 2021-12-19
+tags:
+- kde
 ---
 
 [Konsole](https://userbase.kde.org/Konsole), KDE's terminal emulator, supports

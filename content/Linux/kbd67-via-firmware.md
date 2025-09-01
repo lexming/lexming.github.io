@@ -1,8 +1,8 @@
 ---
 title: "Upgrade KBD67v2 to VIA compatible firmware"
-date: 2022-01-09 16:00
-categories: linux
-tags: keyboards
+date: 2022-01-09
+tags:
+- keyboards
 ---
 
 Keyboards with [VIA](https://caniusevia.com/) compatible firmwares can have

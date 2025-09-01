@@ -1,8 +1,8 @@
 ---
 title: "Bootstrapping a headless Raspberry Pi"
-date: 2022-07-09 20:00
-categories: linux
-tags: debian
+date: 2022-07-09
+tags:
+- debian
 ---
 
 Nowadays, thanks to the `rpi-manager` from [Raspberry Pi

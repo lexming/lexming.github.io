@@ -1,7 +1,6 @@
 ---
 title: "Poor man's history fuzzy finder"
-date: 2022-02-19 16:00
-categories: linux
+date: 2022-02-19
 tags: bash
 ---
 

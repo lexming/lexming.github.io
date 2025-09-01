@@ -1,8 +1,8 @@
 ---
 title: "File system loop with Btrfs and NFS"
-date: 2023-01-15 16:00
-categories: linux
-tags: storage
+date: 2023-01-15
+tags:
+- storage
 ---
 
 I got the following error on a regular `find` command looking for files in the

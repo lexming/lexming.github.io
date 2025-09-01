@@ -1,8 +1,8 @@
 ---
 title: "Cron jobs with systemd"
-date: 2022-04-05 18:00
-categories: linux
-tags: systemd
+date: 2022-04-05
+tags:
+- systemd
 ---
 
 [Systemd](https://systemd.io/) has timers, which can be used as an alternative
