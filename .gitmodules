@@ -1,4 +1,5 @@
 [submodule "external/quartz"]
 	path = external/quartz
 	url = https://github.com/jackyzha0/quartz.git
-	branch = v4
+    branch = v4
+    ignore = dirty
