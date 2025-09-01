@@ -27,6 +27,8 @@ jobs:
           node-version: 22
       - name: Install Dependencies
         run: npm ci
+      - name: Copy Configuration
+        run: cp quartz.config.ts external/quartz/quartz.config.ts
       - name: Build Quartz
         run: npx quartz build
       - name: Upload artifact
