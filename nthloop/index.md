@@ -1,7 +1,6 @@
 ---
 title: Here we go again
 ---
-
 Welcome to my personal collection of technical notes about Linux system
 administration.
 
@@ -25,4 +24,3 @@ clusters of SBCs (Single Board Computers like the Raspberry Pi).
 Since 2019, I am part of the Scientific Compute & Data team of the Vrije
 Universiteit Brussel (Belgium) where my main roles are HPC system architect and
 research software engineer.
-
