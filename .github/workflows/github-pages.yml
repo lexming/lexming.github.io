@@ -29,7 +29,7 @@ jobs:
         run: npm ci
       - name: Install Nightfox Theme
         run: |
-          mkdir external/quartz/styles/themes
+          mkdir quartz/styles/themes
           curl -o quartz/styles/themes/_index.scss https://raw.githubusercontent.com/saberzero1/quartz-themes/refs/heads/master/themes/nightfox/_index.scss
           echo '@use "themes";' >> quartz/styles/custom.scss
       - name: Copy Configuration
