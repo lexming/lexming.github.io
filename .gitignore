@@ -2,9 +2,8 @@
 .obsidian
 .quartz-cache
 .replit
-node_modules
+node_modules/
 private/
-prof
-public
+public/
 replit.nix
 tsconfig.tsbuildinfo
