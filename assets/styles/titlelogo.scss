@@ -1,0 +1,42 @@
+// custom title tile with logo image
+@use "./variables.scss" as *;
+
+.page-title {
+  width: 100%;
+}
+@media all and ($mobile) {
+  .page-title {
+    text-align: left;
+  }
+  .page-title > A::before {
+    display: inline-block;
+    margin: 0% 4%;
+    padding: 3% 10%;
+    border-radius: 8px;
+    background-image: url(static/nth-loop-fractal-tree.png);
+    background-position: 50% 20%;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 8px 2px #0009 inset;
+    content: "logo";
+    color: transparent;
+    font-size: inherit;
+  }
+}
+@media all and not ($mobile) {
+  .page-title {
+    text-align: right;
+  }
+  .page-title > A::after {
+    display: block;
+    height: 356px;
+    margin: 4% 0%;
+    border-radius: 12px;
+    background-image: url(static/nth-loop-fractal-tree.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0px 0px 12px 4px #0009 inset;
+    content: "logo";
+    color: transparent;
+    font-size: 0;
+  }
+}

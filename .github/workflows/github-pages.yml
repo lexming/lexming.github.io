@@ -27,13 +27,19 @@ jobs:
           node-version: 22
       - name: Install Dependencies
         run: npm ci
+      - name: Install Favicon and Logos
+        run: |
+          cp assets/nth-loop-favicon.png quartz/static/icon.png
+          cp assets/nth-loop-fractal-tree.png quartz/static/
+      - name: Install Custom Styles
+        run: |
+          cp assets/styles/titlelogo.scss quartz/styles/titlelogo.scss
+          echo '@use "./titlelogo.scss";' >> quartz/styles/custom.scss
       - name: Install Nightfox Theme
         run: |
           mkdir quartz/styles/themes
           curl -o quartz/styles/themes/_index.scss https://raw.githubusercontent.com/saberzero1/quartz-themes/refs/heads/master/themes/nightfox/_index.scss
           echo '@use "themes";' >> quartz/styles/custom.scss
-      - name: Install Favicon
-        run: cp assets/nth-loop-favicon.png quartz/static/icon.png
       - name: Copy Configuration
         run: cp quartz.config.ts external/quartz/quartz.config.ts
       - name: Build Quartz
