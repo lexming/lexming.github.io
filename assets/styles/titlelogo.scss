@@ -5,11 +5,11 @@
   width: 100%;
 }
 @media all and ($mobile) {
-  .page-title {
+  body .page-title {
     display: block;
     text-align: left;
   }
-  .page-title > A::before {
+  body .page-title > A::before {
     display: inline-block;
     margin: 0% 4%;
     padding: 3% 10%;
@@ -24,11 +24,11 @@
   }
 }
 @media all and not ($mobile) {
-  .page-title {
+  body .page-title {
     display: block;
     text-align: right;
   }
-  .page-title > A::after {
+  body .page-title > A::after {
     display: block;
     height: 356px;
     margin: 4% 0%;
