@@ -33,7 +33,7 @@ jobs:
           curl -o quartz/styles/themes/_index.scss https://raw.githubusercontent.com/saberzero1/quartz-themes/refs/heads/master/themes/nightfox/_index.scss
           echo '@use "themes";' >> quartz/styles/custom.scss
       - name: Install Favicon
-        run: cp assets/fractal-tree.png quartz/static/icon.png
+        run: cp assets/nth-loop-favicon.png quartz/static/icon.png
       - name: Copy Configuration
         run: cp quartz.config.ts external/quartz/quartz.config.ts
       - name: Build Quartz
