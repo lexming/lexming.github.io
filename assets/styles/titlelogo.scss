@@ -6,6 +6,7 @@
 }
 @media all and ($mobile) {
   .page-title {
+    display: block;
     text-align: left;
   }
   .page-title > A::before {
@@ -24,6 +25,7 @@
 }
 @media all and not ($mobile) {
   .page-title {
+    display: block;
     text-align: right;
   }
   .page-title > A::after {
