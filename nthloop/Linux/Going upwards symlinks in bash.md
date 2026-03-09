@@ -8,7 +8,7 @@ Changing directory with `cd` to a [symlinked](https://en.wikipedia.org/wiki/Symb
 
 For instance, assume that we have the following file structure where `active_project` is a symlink to a folder nested in another file tree:
 
-```text showLineNumbers
+```text
 .
 ├── data
 │   ├── project1
@@ -41,7 +41,7 @@ This different outcome is due to how `cd` works. The command `cd` is a built-in 
 
 TAB completion can also behave differently depending on the default settings of bash in your Linux distribution or if extra [bash completions](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html) are included. The built-in completion for `cd` in bash should follow the symlink on `..` backwards, as `cd` does on execution. If that's not the case, an external bash completion might be interfering. You can switch back to the built-in completion for `cd` with the following command in your `.bashrc`:
 
-```shell caption="~/.bashrc"
+```shell showLineNumbers caption="Remove completion for cd"
 complete -r cd
 ```
 

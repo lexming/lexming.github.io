@@ -36,8 +36,9 @@ jobs:
         run: |
           cp assets/nth-loop-favicon.png quartz/static/icon.png
           cp assets/nth-loop-fractal-tree.png quartz/static/
-          cp assets/styles/titlelogo.scss quartz/styles/titlelogo.scss
+          cp assets/styles/*.scss quartz/styles/
           echo '@use "./titlelogo.scss";' >> quartz/styles/custom.scss
+          echo '@use "./codeblocks.scss";' >> quartz/styles/custom.scss
       - name: Copy Configuration
         run: cp quartz.config.ts external/quartz/quartz.config.ts
       - name: Build Quartz

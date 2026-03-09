@@ -1,0 +1,14 @@
+// disable line numbers unless explicitly enabled in the code block
+pre > code > span[data-line]::before {
+    display:none;
+}
+pre > code[data-line-numbers] > span[data-line]::before {
+    display: inline-block;
+}
+
+// format code block captions
+figure[data-rehype-pretty-code-figure] figcaption {
+    font-size: smaller;
+    text-align: center;
+    padding: 0ex 2em;
+}
