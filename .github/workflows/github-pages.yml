@@ -40,7 +40,9 @@ jobs:
           echo '@use "./titlelogo.scss";' >> quartz/styles/custom.scss
           echo '@use "./codeblocks.scss";' >> quartz/styles/custom.scss
       - name: Copy Configuration
-        run: cp quartz.config.ts external/quartz/quartz.config.ts
+        run: |
+          cp quartz.config.ts external/quartz/quartz.config.ts
+          cp quartz.layout.ts external/quartz/quartz.layout.ts
       - name: Build Quartz
         run: npx quartz build
       - name: Upload artifact
