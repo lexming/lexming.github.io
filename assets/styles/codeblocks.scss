@@ -12,3 +12,9 @@ figure[data-rehype-pretty-code-figure] figcaption {
     text-align: center;
     padding: 0ex 2em;
 }
+figure[data-rehype-pretty-code-figure] pre:has(> code) {
+    margin: 0px;
+}
+figure[data-rehype-pretty-code-figure] {
+    margin: 1ex 1em;
+}
