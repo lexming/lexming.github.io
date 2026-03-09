@@ -1,7 +1,7 @@
 // custom title tile with logo image
 @use "./variables.scss" as *;
 
-.page-title {
+body .page-title {
   width: 100%;
 }
 @media all and ($mobile) {
