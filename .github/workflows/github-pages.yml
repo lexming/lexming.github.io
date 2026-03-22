@@ -30,7 +30,7 @@ jobs:
       - name: Install Nightfox Theme
         run: |
           mkdir quartz/styles/themes
-          curl -o quartz/styles/themes/_index.scss https://raw.githubusercontent.com/saberzero1/quartz-themes/refs/heads/master/themes/nightfox/_index.scss
+          cp assets/themes/nightfox.scss quartz/styles/themes/_index.scss
           echo '@use "themes";' >> quartz/styles/custom.scss
       - name: Install Custom Styles
         run: |
