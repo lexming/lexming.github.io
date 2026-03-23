@@ -1,11 +1,11 @@
 ---
 title: Delete lines of text with sed
 date: 2022-07-07
+update: 2026-03-23
 tags:
   - regex
-update: 23/03/2026
 ---
-# Delete each matching line
+## Delete each matching line
 
 Probably the simplest case is to delete each line of text that matches the _regex_ pattern.
 
@@ -29,7 +29,7 @@ $ sed '/sem/d' sample.txt
   12   conubia nostra inceptos himenaeos.
 ```
 
-# Delete all lines between matching patterns
+## Delete all lines between matching patterns
 
 Delete each line of text that matches the _regex_ pattern and all lines in between them.
 
@@ -47,7 +47,7 @@ $ sed '/Quisque/,/posuere/d' sample.txt
    12   conubia nostra inceptos himenaeos.
 ```
 
-# Delete all lines between matching patterns, excluding the patterns
+## Delete all lines between matching patterns, excluding the patterns
 
 Delete each line of text between the lines that match the _regex_ pattern, but exclude the lines with the matches.
 

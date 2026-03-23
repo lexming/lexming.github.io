@@ -6,7 +6,7 @@ tags:
 ---
 Manipulating environment variables can be tedious as it is almost always necessary to check if the target variable already exists, its value and act in consequence. Fortunately, [shell parameter expansion in bash](https://www.gnu.org/software/bash/manual/html_node/Shell-Parameter-Expansion.html) provides an effective mechanism to quickly deal with those checks and it is specially useful in handling default values and expanding lists of paths.
 
-# Default Values
+## Default Values
 
 The minus ``-`` operator in the expansion will substitute the preceding parameter if it is unset with the result of the expansion of the _word_ after it. Hence, ``-`` allows to easily assign default values to any shell variables.
 
@@ -16,7 +16,7 @@ It is also possible to use an extra colon in the operator ``:-`` to substitute p
 PARAMETER=${PARAMETER:-default}
 ```
 
-# Expand a List of Paths
+## Expand a List of Paths
 
 Environment variables defining a collection of paths (_i.e._ ``$PATH``, ``$LD_LIBRARY_PATH``) are usually formed as a simple colon-separated list of paths. In this case, the goal is to set or update those variables avoiding any trailing ``:`` characters.
 
