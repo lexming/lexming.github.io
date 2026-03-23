@@ -1,5 +1,5 @@
 ---
-title: Going upwards symlinks in bash
+title: Following symlinks in reverse
 date: 2022-10-16
 tags:
   - bash

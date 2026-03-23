@@ -1,4 +1,5 @@
-# Tips and Tricks in bash
+# Tips and tricks in bash
 
 * [[Updating variables in shell environment]]
-* [[Going upwards symlinks in bash]]
+* [[Following symlinks in reverse]]
+
