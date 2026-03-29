@@ -1,7 +1,7 @@
 ---
 title: Delete lines of text with sed
 date: 2022-07-07
-update: 2026-03-23
+modified: 2026-03-23
 tags:
   - regex
 ---
