@@ -113,3 +113,8 @@ $ sed -f script.sed lorem.txt
 ```
 
 Resulting in the same output as the original command.
+
+> [!example] Example: controlling the installation of JAX in EasyBuild
+> The installation of [JAX](https://github.com/jax-ml/jax) v0.3.25 in EasyBuild ensures the use of local sources for [TensorFlow](https://www.tensorflow.org/) by replacing the repository definition in the Bazel build files with a local one. 
+> 
+> This is achieved with [jaxlib_local-tensorflow-repo.sed](https://github.com/easybuilders/easybuild-easyconfigs/blob/84cba69f36cbac43e42c38aa58f95d70ce1ccc4a/easybuild/easyconfigs/j/jax/jaxlib_local-tensorflow-repo.sed), a sed script [applied to the WORSKPACE file](https://github.com/easybuilders/easybuild-easyconfigs/blob/7e514e163c1e5cf7cd08a2e2b626f66f1e86b4b4/easybuild/easyconfigs/j/jax/jax-0.3.25-foss-2022a.eb#L36) to match the repository definition of TensorFlow, comment out its contents and inject the local definition instead.
