@@ -1,6 +1,7 @@
 ---
 title: Updating variables in shell environment
-date: 2021-07-24
+created: 2021-07-24
+modified: 2021-07-24
 tags:
   - bash
 ---
