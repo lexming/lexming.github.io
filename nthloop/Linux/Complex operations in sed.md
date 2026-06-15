@@ -1,11 +1,11 @@
 ---
 title: Complex operations in sed
-date: 2026-03-24
+created: 2022-01-08
+modified: 2026-03-24
 tags:
   - regex
 ---
 [Commands in sed](https://www.gnu.org/software/sed/manual/sed.html#sed-commands-list) can be constructed in sequences and nested in blocks allowing for more complex operation that the built-in commands.
-
 ## Sequence of commands
 
 A single `sed` execution can run any number of _sed commands_ on the input text. The commands in the sequence are separated by semi-colons

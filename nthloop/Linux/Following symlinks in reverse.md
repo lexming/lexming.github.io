@@ -1,6 +1,7 @@
 ---
 title: Following symlinks in reverse
-date: 2022-10-16
+created: 2022-10-16
+modified: 2022-10-16
 tags:
   - bash
 ---
