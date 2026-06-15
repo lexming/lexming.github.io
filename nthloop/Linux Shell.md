@@ -2,6 +2,7 @@
 
 * [[Updating variables in shell environment]]
 * [[Following symlinks in reverse]]
+* [[Poor man history fuzzy finder]]
 
 ## Sparring with regular expressions
 
