@@ -1,5 +1,6 @@
-## Core systems
+## Devices
 [[Bootstrapping a headless Raspberry Pi]]
+[[Upgrade KBD67v2 to VIA compatible firmware]]
 
 ## Storage services
 
