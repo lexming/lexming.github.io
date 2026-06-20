@@ -10,3 +10,4 @@
 ## Desktop environments
 
 [[Mirrorless camera as webcam in Linux]]
+[[Terminal padding in KDE Konsole]]
