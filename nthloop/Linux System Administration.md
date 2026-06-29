@@ -1,8 +1,12 @@
 ## Devices
+
 [[Bootstrapping a headless Raspberry Pi]]
 [[Upgrade KBD67v2 to VIA compatible firmware]]
 
-## Storage services
+# Systemd
+
+[[Systemd service unit logs with vi]]
+### Storage services
 
 [[NFS server options in openmediavault 7]]
 [[File system loop with Btrfs and NFS]]

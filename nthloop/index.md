@@ -17,7 +17,7 @@ Notes on how to use a Linux system. Mostly related to shell scripting in [bash](
 
 Notes on how to run daemons in your Linux boxes and bend their will to your commands.
 
-[[System Administration|Index of notes on System Administration]]
+[[Linux System Administration|Index of notes on System Administration]]
 
 ## Building Software
 
