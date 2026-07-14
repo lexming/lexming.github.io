@@ -1,17 +1,20 @@
 ## Devices
 
-[[Bootstrapping a headless Raspberry Pi]]
-[[Upgrade KBD67v2 to VIA compatible firmware]]
+* [[Bootstrapping a headless Raspberry Pi]]
+* [[Upgrade KBD67v2 to VIA compatible firmware]]
 
-# Systemd
+## Linux kernel
 
-[[Systemd service unit logs with vi]]
+* [[Handling security issues in the Linux kernel]]
+## Systemd
+
+* [[Systemd service unit logs with vi]]
 ### Storage services
 
-[[NFS server options in openmediavault 7]]
-[[File system loop with Btrfs and NFS]]
+* [[NFS server options in openmediavault 7]]
+* [[File system loop with Btrfs and NFS]]
 
 ## Desktop environments
 
-[[Mirrorless camera as webcam in Linux]]
-[[Terminal padding in KDE Konsole]]
+* [[Mirrorless camera as webcam in Linux]]
+* [[Terminal padding in KDE Konsole]]

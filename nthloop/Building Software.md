@@ -1,3 +1,3 @@
-# Package Managers
+## Package Managers
 
-[[Patching a kernel RPM package]]
+* [[Patching an RPM package]]
