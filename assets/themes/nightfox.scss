@@ -2173,13 +2173,13 @@ body {
   }
 
   .page article li {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1ex;
+    margin-bottom: 1ex;
   }
 
   .page article li > * {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1ex;
+    margin-bottom: 1ex;
   }
 
   code {
@@ -2194,7 +2194,7 @@ body {
     border-end-start-radius: 0px;
     border-end-end-radius: 0px;
     color: light-dark(rgb(61, 43, 90), rgb(205, 206, 207));
-    padding: 0px;
+    padding: 0ex 0.5em;
   }
 
   pre > code,
