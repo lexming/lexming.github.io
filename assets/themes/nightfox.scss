@@ -2172,6 +2172,11 @@ body {
     transform: none;
   }
 
+  .page article li {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
   code {
     background-color: rgba(0, 0, 0, 0);
     border: 0px solid light-dark(rgb(61, 43, 90), rgb(205, 206, 207));
