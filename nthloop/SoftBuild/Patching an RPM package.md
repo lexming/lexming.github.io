@@ -29,7 +29,7 @@ Package sources including the tarball of the source code are unpacked into `~/rp
 
 ## Patch and rebuild the RPM
 
-Once you have your patch file ready, place the file in `~/rpmbuild/SOURCES` . The name of the patch file has usually the form `9999-description.patch`.
+Once you have your patch file ready, place the file in `~/rpmbuild/SOURCES`. The name of the patch file has usually the form `9999-description.patch`.
 
 Jump to `~/rpmbuild/SPECS/` which contains the _spec_ file of your RPM:
 

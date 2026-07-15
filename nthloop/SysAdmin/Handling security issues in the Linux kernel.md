@@ -32,7 +32,7 @@ The hardest part is to get the patch file ready for your specific version of the
 1. Get the source package (SRPM) of your kernel and install it with its build dependencies. See [[Patching an RPM package]]
    ![[2026-07-04-pkgsorg-srpm-link.png]]
    
-2. Once you have your patch file, place it in `~/rpmbuild/SOURCES` . The name of the patch file has usually the form `9999-description.patch`.
+2. Once you have your patch file, place it in `~/rpmbuild/SOURCES`. The name of the patch file has usually the form `9999-description.patch`.
 
 3. Jump to `~/rpmbuild/SPECS/` which contains the _spec_ file to build the kernel RPM and update it to apply your patch
 
