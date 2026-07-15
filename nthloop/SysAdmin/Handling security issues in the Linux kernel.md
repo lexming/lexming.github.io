@@ -29,7 +29,7 @@ Patching and rebuilding the Linux kernel follows the same procedure as [[Patchin
 
 The hardest part is to get the patch file ready for your specific version of the Linux kernel. If you are lucky, this can be as easy as reusing the same patch for the current upstream version of the kernel; but usually those do not apply and you will need to back-port it with obscure arts.
 
-1. Get the source package (SRPM) of your kernel. See [[Patching an RPM package]]
+1. Get the source package (SRPM) of your kernel and install it with its build dependencies. See [[Patching an RPM package]]
    ![[2026-07-04-pkgsorg-srpm-link.png]]
    
 2. Once you have your patch file, place it in `~/rpmbuild/SOURCES` . The name of the patch file has usually the form `9999-description.patch`.
@@ -56,15 +56,7 @@ The hardest part is to get the patch file ready for your specific version of the
     # END OF PATCH APPLICATIONS
    ```
 
-4. Install the dependencies to build the RPM
-
-   ```bash
-   sudo dnf builddep kernel-5.14.0-687.17.1.el9_8.src.rpm
-   ```
-
-   The command `dnf builddep` usually fails to install all required packages to build the kernel. If the following commands fail due to missing packages, install those manually with `dnf install`.
-
-5. Rebuild the kernel
+4. Rebuild the kernel
 
    ```bash
    rpmbuild --define "buildid .lex.1" -bb kernel.spec |& tee kernel-build.log
