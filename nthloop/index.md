@@ -31,5 +31,5 @@ Hi, I'm Alex. I enjoy tinkering with computer clusters. From big and powerful HP
 
 Since 2019, I am part of the [Scientific Compute & Data](https://hpc.vub.be/) team of the [Vrije Universiteit Brussel](https://www.vub.be) (Belgium) where my main roles are HPC system architect and research software engineer.
 
-* :luc_github: [lexming](https://github.com/lexming)
-* :luc_linkedin: [alex-domingo](https://www.linkedin.com/in:/alex-domingo-843a01175])
+* :luc_user: [github: lexming](https://github.com/lexming)
+* :luc_user: [linkedin: alex-domingo](https://www.linkedin.com/in:/alex-domingo-843a01175])
