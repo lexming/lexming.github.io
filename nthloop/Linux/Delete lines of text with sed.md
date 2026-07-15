@@ -86,23 +86,23 @@ sed '/Quisque/,/posuere/{//!d}' sample.text
     2 adipiscing elit. Quisque faucibus ex
     
     3 sapien vitae pellentesque sem placerat.
-
+    
     4 In id cursus mi pretium tellus duis
-
+    
     5 convallis. Tempus leo eu aenean sed
-
+    
     6 diam urna tempor. Pulvinar vivamus
-
+    
     7 fringilla lacus nec metus bibendum
-
+    
     8 egestas. Iaculis massa nisl malesuada
-
+    
     9 lacinia integer nunc posuere. Ut
-
+    
     10 hendrerit semper vel class aptent
-
+    
     11 taciti sociosqu. Ad litora torquent per
-
+    
     12 conubia nostra inceptos himenaeos.
 
 
