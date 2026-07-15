@@ -2173,18 +2173,13 @@ body {
   }
 
   .page article li {
-    margin-top: 1ex;
-    margin-bottom: 1ex;
+    margin-top: 1em;
+    margin-bottom: 1em;
   }
 
-  .page article li > * {
+  .page article img, .page article figure {
     margin-top: 1ex;
     margin-bottom: 1ex;
-  }
-
-  .page article li > svg {
-    margin-top: 0;
-    margin-bottom: 0;
   }
 
   code {
