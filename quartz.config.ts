@@ -11,7 +11,7 @@ const config: QuartzConfig = {
     pageTitle: "nth loop",
     pageTitleSuffix: "",
     enableSPA: true,
-    enablePopovers: true,
+    enablePopovers: false,
     analytics: null,
     locale: "en-GB",
     baseUrl: "lexming.github.com",
