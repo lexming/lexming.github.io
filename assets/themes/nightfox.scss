@@ -2182,6 +2182,11 @@ body {
     margin-bottom: 1ex;
   }
 
+  .page article li > svg {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
   code {
     background-color: rgba(0, 0, 0, 0);
     border: 0px solid light-dark(rgb(61, 43, 90), rgb(205, 206, 207));
