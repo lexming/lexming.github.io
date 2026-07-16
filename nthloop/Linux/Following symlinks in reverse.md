@@ -9,7 +9,7 @@ Changing directory with `cd` to a [symlinked](https://en.wikipedia.org/wiki/Symb
 
 For instance, assume that we have the following file structure where `active_project` is a symlink to a folder nested in an adjacent file tree:
 
-```text
+```
 .
 ├── data
 │   ├── project1
