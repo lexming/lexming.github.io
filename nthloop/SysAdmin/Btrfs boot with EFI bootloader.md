@@ -1,9 +1,11 @@
 ---
 title: Btrfs boot with EFI bootloader
 created: 2022-07-18
+modified: 2022-07-18
 tags:
   - gentoo
   - kernel
+  - btrfs
 ---
 We can directly boot into the Linux kernel without any external bootloader (*e.g.* [GRUB](https://www.gnu.org/software/grub/)) by enabling support in the kernel for the [EFI bootloader](https://wiki.gentoo.org/wiki/EFI_stub).
 
