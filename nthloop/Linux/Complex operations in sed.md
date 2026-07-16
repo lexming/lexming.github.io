@@ -23,8 +23,9 @@ For instance, consider the following sample text:
 The following command contains a sequence of 3 _sed commands_ that will delete line 2, substitute some pattern and append a new line after another pattern:
 
 ```shell
-$ sed '2d;s/Lorem/Verbum primum/;/placerat/a Haec est sententia addita.' lorem.txt
-
+sed '2d;s/Lorem/Verbum primum/;/placerat/a Haec est sententia addita.' lorem.txt
+```
+```
 1 Verbum primum ipsum dolor sit amet consectetur
 3 sapien vitae pellentesque sem placerat.
   Haec est sententia addita.
@@ -49,8 +50,9 @@ Command blocks in _sed_ allow to perform more complex operations in the matching
 The following custom `sed` command replaces all spaces with underscores (`y` command) on lines matching the word _Quisque_:
 
 ```shell
-$ sed '/Quisque/{y/ /_/}' lorem.txt
-
+sed '/Quisque/{y/ /_/}' lorem.txt
+```
+```
 1 Lorem ipsum dolor sit amet consectetur
 2 adipiscing_elit._Quisque_faucibus_ex
 3 sapien vitae pellentesque sem placerat.
@@ -59,8 +61,9 @@ $ sed '/Quisque/{y/ /_/}' lorem.txt
 This can be easily expanded with extra commands. The following command adds a substitution of the word _elit_ to _rosa_:
 
 ```shell
-$ sed '/Quisque/{y/ /_/;s/elit/rosa/}' lorem.txt
-
+sed '/Quisque/{y/ /_/;s/elit/rosa/}' lorem.txt
+```
+```
 1 Lorem ipsum dolor sit amet consectetur
 2 adipiscing_rosa._Quisque_faucibus_ex
 3 sapien vitae pellentesque sem placerat.
@@ -69,10 +72,11 @@ $ sed '/Quisque/{y/ /_/;s/elit/rosa/}' lorem.txt
 Using the insert `i` and append `a` commands right in the command-line is a bit more cumbersome as those require using new lines to separate the contents of insert/append from the other commands.
 
 ```shell
-$ sed '/Quisque/{y/ /_/;s/elit/rosa/;i\
+sed '/Quisque/{y/ /_/;s/elit/rosa/;i\
   Haec est sententia addita.
   }' lorem.txt
-  
+```
+```  
 1 Lorem ipsum dolor sit amet consectetur
   Haec est sententia addita.
 2 adipiscing_rosa._Quisque_faucibus_ex
@@ -104,8 +108,9 @@ Haec est sententia addita
 Then executed with the command
 
 ```shell
-$ sed -f script.sed lorem.txt
-
+sed -f script.sed lorem.txt
+```
+```
 1 Lorem ipsum dolor sit amet consectetur
   Haec est sententia addita
 2 adipiscing_rosa._Quisque_faucibus_ex
