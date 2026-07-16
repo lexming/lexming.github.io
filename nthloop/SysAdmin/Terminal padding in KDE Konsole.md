@@ -15,7 +15,7 @@ _Settings_ > _Edit Current Profile_ > _Appearance_ (left toolbox) > _Miscellaneo
 
 Alternatively, the padding of the terminal window can also be set in your profile configuration file. Which also works in older versions of Konsole without the toggle in the GUI. Change the default padding by setting the `TerminalMargin` parameter to the desired value of pixels in the *General* section of your profile file in `~/.local/share/konsole/`
 
-```
+```config showLineNumbers
 [General]
 Name=lexming
 Parent=FALLBACK/

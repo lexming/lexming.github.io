@@ -6,6 +6,7 @@
 ## Linux kernel
 
 * [[Handling security issues in the Linux kernel]]
+* [[Btrfs boot with EFI bootloader]]
 ## Systemd
 
 * [[Systemd service unit logs with vi]]
@@ -18,3 +19,4 @@
 
 * [[Mirrorless camera as webcam in Linux]]
 * [[Terminal padding in KDE Konsole]]
+* [[Disable meta key on KDE App Launcher]]
