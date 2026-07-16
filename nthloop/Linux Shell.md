@@ -1,6 +1,7 @@
 ## Tips and tricks in bash
 
 * [[Updating variables in shell environment]]
+* [[Mixing quotes in Bash]]
 * [[Following symlinks in reverse]]
 * [[Poor man history fuzzy finder]]
 
