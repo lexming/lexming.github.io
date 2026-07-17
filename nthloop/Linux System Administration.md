@@ -14,6 +14,7 @@
 
 * [[NFS server options in openmediavault 7]]
 * [[File system loop with Btrfs and NFS]]
+* [[Scrubbing a Btrfs filesystem]]
 
 ## Desktop environments
 
