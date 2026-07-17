@@ -4,6 +4,7 @@
 * [[Mixing quotes in Bash]]
 * [[Following symlinks in reverse]]
 * [[Poor man history fuzzy finder]]
+* [[Passing from find to sub-shells]]
 
 ## Sparring with regular expressions
 
