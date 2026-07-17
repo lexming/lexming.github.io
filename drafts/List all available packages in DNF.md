@@ -1,3 +1,0 @@
-```
-dnf list kernel --showduplicates
-```

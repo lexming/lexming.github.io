@@ -1,0 +1,262 @@
+#!/bin/bash
+#
+# Report status of all partitions in Slurm cluster
+# including node state and used resources
+
+VERSION="0.2"
+
+BAR_BLOCK_FULL="█"
+BAR_BLOCK_MIX="▒"
+BAR_BLOCK_IDLE="░"
+BAR_BLOCK_OFF="×"
+
+RESOURCE_DISPLAY="usage"
+WELLCOME_DISPLAY=0
+
+IFS='' read -r -d '' BANNER_SOFIA <<"EOF"
+         ○◎◎◎◎◎◎○      ◎◎◎◎◎◎○ 
+·○   ○◎◎◎◎◎◎◎◎◎◎◎○····○◎◎◎◎◎◎◎◎◎◎○  ○○·
+··◎◎○○    ○◎◎○○··········◎◎○    ○◎◎◎○·
+      ○◎◎◎◎○·····●●●●●●·····○◎◎◎                           ●●●◉
+ ○◎◎◎◎◎◎◎◎◎····●●◉····◉●●····◎◎◎◎◎◎◎◎◎·                   ●●●
+       ○◎○ ···●◉··    ··◉●··· ◎○        ●●●●●●◉ ·○○○○○○· ●●●●◉○○○○  ●●●●●●●·●
+ ··○○◎◎◎◎◎○···●◉··    ··◉●···○◎◎○◎◎◎○·  ●●●●   ·○○    ○○· ●●●  ○○○ ●●●    ●●●
+      ○◎◎◎◎····●●◉····◉●●···○◎◎◎           ●●●◉·○○    ○○· ●●●  ○○○ ●●●    ●●●
+ ·○○◎◎◎◎◎◎◎◎○····●●●●●●····○◎◎◎◎◎◎◎◎○·  ●●●●●●● ·○○○○○○·  ●●●  ○○○  ●●●●●●●·●
+EOF
+
+IFS='' read -r -d '' BANNER_BRUSSEL <<"EOF"
+           [97;48;2;34;63;122m_   ___   _ ____ [0m
+          [97;48;2;227;101;57m\[97;48;2;34;63;122m \ / / | | | __ )[0m
+           [97;48;2;34;63;122m\ V /| |_| | __ \[0m
+           [97;48;2;34;63;122m \_/  \___/|____/[0m          Welcome to the VUB-HPC clusters!
+           [97;48;2;34;63;122m  __ _____  _____[0m
+           [97;48;2;34;63;122m / // / _ \/ ___/[0m               \   ,__,
+           [97;48;2;34;63;122m/ _  / ___/ /__  [0m                \  (oo)____
+          [45;97m/[97;48;2;34;63;122m_//_/_/   \___/  [0m                   (__)    )\
+           [97;48;2;34;63;122m                 [0m                      ||--||
+EOF
+
+display_help() {
+    echo "Display current status of all partitions in the cluster"
+    echo "Usage: cluster-status [-hvf]"
+    echo "  -h: print this help message"
+    echo "  -v: print version"
+    echo "  -f: display free resources instead of used"
+    echo "  -w: show wellcome message"
+}
+
+nodes_bar_chart() {
+    # render bar visualizing given status of nodes
+    total_nodes=$1
+    idle_cnt=$2
+    mixed_cnt=$3
+    alloc_cnt=$4
+    bar_width=60
+
+    # Calculate percentages for each state using awk for better precision
+    idle_frac=0
+    mixed_frac=0
+    alloc_frac=0
+
+    if [ $total_nodes -gt 0 ]; then
+        idle_frac=$(awk -v idle=$idle_cnt -v total=$total_nodes "BEGIN {printf \"%0.3f\", idle / total}")
+        mixed_frac=$(awk -v mixed=$mixed_cnt -v total=$total_nodes "BEGIN {printf \"%0.3f\", mixed / total}")
+        alloc_frac=$(awk -v alloc=$alloc_cnt -v total=$total_nodes "BEGIN {printf \"%0.3f\", alloc / total}")
+    fi
+
+    # Calculate number of characters for each color
+    idle_blocks=$(awk -v width=$bar_width -v idle=$idle_frac "BEGIN {printf \"%.0f\", width * idle}")
+    mixed_blocks=$(awk -v width=$bar_width -v mixed=$mixed_frac "BEGIN {printf \"%.0f\", width * mixed}")
+    alloc_blocks=$(awk -v width=$bar_width -v alloc=$alloc_frac "BEGIN {printf \"%.0f\", width * alloc}")
+
+    # Create the bar with color blocks
+    bar=""
+    # Allocated nodes
+    for ((i=0; i<alloc_blocks; i++)); do
+        bar="${bar}${BAR_BLOCK_FULL}"
+    done
+    # Mixed nodes
+    for ((i=0; i<mixed_blocks; i++)); do
+        bar="${bar}${BAR_BLOCK_MIX}"
+    done
+    # Idle nodes
+    for ((i=0; i<idle_blocks; i++)); do
+        bar="${bar}${BAR_BLOCK_IDLE}"
+    done
+    # Fill remaining space with offline nodes
+    while [ ${#bar} -lt $bar_width ]; do
+        bar="${bar}${BAR_BLOCK_OFF}"
+    done
+
+    echo "${bar}"
+}
+
+partition_stats() {
+    # print formatted stats of some partition
+    res_label="used"
+    [ $RESOURCE_DISPLAY == "free" ] && res_label="free"
+
+    printf "\033[1m%+12s\033[0m ───┤%s│\n" "$1" "$2"
+
+    cpu_stats=$(printf "_%s_CPUs:_%i/%i_(%0.0f%%)_" "$res_label" "$3" "$4" "$5")
+    if [ "$7" -eq 0 ]; then
+        stats_detail=$(printf "└─%-58s─┘" "$cpu_stats")
+    else
+        gpu_stats=$(printf "_GPUs:_%i/%i_(%0.0f%%)_" "$6" "$7" "$8")
+        stats_detail=$(printf "└─%-32s──%+24s─┘" "$cpu_stats" "$gpu_stats")
+    fi
+    printf "%16s%62s\n" " " "$(sed 's/ /─/g;s/_/ /g' <<< $stats_detail)"
+
+    printf "\n"
+}
+
+# Parse arguments
+while getopts 'hvfw' opt; do
+    case "${opt}" in
+        v) # [-v] version
+           echo "cluster-status v${VERSION}"
+           echo "Developed by VUB-HPC"
+           exit 0
+           ;;
+        h) # [-h] help
+           display_help
+           exit 0
+           ;;
+        f) # [-f] free resources
+           RESOURCE_DISPLAY="free"
+           ;;
+        w) # [-w] wellcome message
+           WELLCOME_DISPLAY=1
+           ;;
+        *) # Unknown argument
+            display_help
+            exit 1
+            ;;
+    esac
+done
+shift $((OPTIND -1))
+
+# Get Slurm data
+slurm_data=$(sinfo --noheader -O "Partition:|,NodeHost:|,StateCompact:|,CPUsState:|,GRES:45|,GRESUSED:45" 2>/dev/null || echo "")
+
+if [ -z "$slurm_data" ]; then
+    echo "Error: Could not retrieve Slurm information"
+    exit 1
+fi
+
+# Process data
+declare -A partition_total_cpus
+declare -A partition_avail_cpus
+declare -A partition_used_cpus
+declare -A partition_total_gpus
+declare -A partition_avail_gpus
+declare -A partition_used_gpus
+declare -A partition_nodes
+declare -A partition_idle_nodes
+declare -A partition_mixed_nodes
+declare -A partition_alloc_nodes
+
+while IFS='|' read -r partition node state cpus gres gres_used; do
+    [ -z "$partition" ] && continue
+
+    # CPU stats
+    IFS='/' read -r cpu_alloc cpu_idle cpu_other cpu_total <<< "$cpus"
+
+    # GPU stats
+    gpu_total=0
+    gpu_used=0
+    gpu_avail=0
+    if [[ "$gres" != "(null)" ]]; then
+        IFS=':' read -r gpu_type gpu_name gpu_cnt <<< "$gres"
+        gpu_total="${gpu_cnt/\(*}"
+        IFS=':' read -r gpu_type gpu_name gpu_used_cnt <<< "$gres_used"
+        gpu_used="${gpu_used_cnt/\(*}"
+        gpu_avail=$((gpu_total - gpu_used))
+    fi
+
+    # Track nodes by state for visual chart
+    # Handle different state formats (idle, mix-, mix, allocated, alloc, down*, drng)
+    [[ -z "${partition_nodes[$partition]}" ]] && partition_nodes[$partition]=0
+    [[ -z "${partition_idle_nodes[$partition]}" ]] && partition_idle_nodes[$partition]=0
+    [[ -z "${partition_mixed_nodes[$partition]}" ]] && partition_mixed_nodes[$partition]=0
+    [[ -z "${partition_alloc_nodes[$partition]}" ]] && partition_alloc_nodes[$partition]=0
+    ((partition_nodes[$partition]++))
+    if [[ "$state" == "idle" ]]; then
+        ((partition_idle_nodes[$partition]++))
+    elif [[ "$state" =~ mix.* ]]; then
+        ((partition_mixed_nodes[$partition]++))
+    elif [[ "$state" =~ alloc.* ]] || [[ "$state" == "plnd" ]] || [[ "$state" == "resv" ]]; then
+        ((partition_alloc_nodes[$partition]++))
+        # these are full nodes regardless of actual use (incl. planned, reserved)
+        cpu_alloc=$cpu_total
+        cpu_avail=0
+        gpu_used=$gpu_total
+        gpu_avail=0
+    fi
+
+    # Aggregate CPU stats
+    [[ -z "${partition_total_cpus[$partition]}" ]] && partition_total_cpus[$partition]=0
+    ((partition_total_cpus[$partition] += cpu_total))
+    [[ -z "${partition_avail_cpus[$partition]}" ]] && partition_avail_cpus[$partition]=0
+    ((partition_avail_cpus[$partition] += cpu_idle))
+    [[ -z "${partition_used_cpus[$partition]}" ]] && partition_used_cpus[$partition]=0
+    ((partition_used_cpus[$partition] += cpu_alloc))
+
+    # Aggregate GPU stats
+    [[ -z "${partition_total_gpus[$partition]}" ]] && partition_total_gpus[$partition]=0
+    ((partition_total_gpus[$partition] += gpu_total))
+    [[ -z "${partition_avail_gpus[$partition]}" ]] && partition_avail_gpus[$partition]=0
+    ((partition_used_gpus[$partition] += gpu_used))
+    [[ -z "${partition_used_gpus[$partition]}" ]] && partition_used_gpus[$partition]=0
+    ((partition_avail_gpus[$partition] += gpu_avail))
+done <<< "$slurm_data"
+
+# Header
+if [ $WELLCOME_DISPLAY == 1 ]; then
+    if [ "$VSC_INSTITUTE_CLUSTER" == "sofia" ]; then
+        wellcome_msg="Welcome to the VSC Tier-1 cluster \033[1msofia\033[0m!"
+        wellcome_banner="$(printf '%b\n%14s○───◉ %b ◉───○' "$BANNER_SOFIA" "" "$wellcome_msg")"
+    else
+        wellcome_banner=$BANNER_BRUSSEL
+    fi
+    printf "\n%b\n\n" "$wellcome_banner"
+else
+    printf "%25s○───◉ Current status of \033[1m%s\033[0m cluster ◉───○\n\n" "" "$VSC_INSTITUTE_CLUSTER"
+fi
+
+# Partition stats
+for partition in $(echo "${!partition_nodes[@]}" | tr ' ' '\n' | sort); do
+    total_cpus=${partition_total_cpus[$partition]}
+    res_cpus=${partition_used_cpus[$partition]}
+    [ $RESOURCE_DISPLAY == "free" ] && res_cpus=${partition_avail_cpus[$partition]}
+
+    cpu_percent="0.00"
+    if [ $total_cpus -gt 0 ]; then
+        cpu_percent=$(awk -v res=$res_cpus -v total=$total_cpus "BEGIN {printf \"%0.2f\", res * 100 / total}")
+    fi
+
+    total_gpus=${partition_total_gpus[$partition]}
+    res_gpus=${partition_used_gpus[$partition]}
+    [ $RESOURCE_DISPLAY == "free" ] && res_gpus=${partition_avail_gpus[$partition]}
+    gpu_percent="0.00"
+    if [ $total_gpus -gt 0 ]; then
+        gpu_percent=$(awk -v res=$res_gpus -v total=$total_gpus "BEGIN {printf \"%0.2f\", res * 100 / total}")
+    fi
+
+    # Add visual bar chart
+    total_nodes=${partition_nodes[$partition]}
+    idle_cnt=${partition_idle_nodes[$partition]}
+    mixed_cnt=${partition_mixed_nodes[$partition]}
+    alloc_cnt=${partition_alloc_nodes[$partition]}
+
+    nodes_bar="$(nodes_bar_chart $total_nodes $idle_cnt $mixed_cnt $alloc_cnt)"
+    partition_stats "$partition" "$nodes_bar" "$res_cpus" "$total_cpus" "$cpu_percent" "$res_gpus" "$total_gpus" "$gpu_percent"
+done
+
+# Footer
+# we use a different terminology for the status of nodes than the one employed by Slurm on purpose
+# to avoid confusing users that check both `cluster-status` and `sinfo`.
+legend="$BAR_BLOCK_FULL full $BAR_BLOCK_MIX partial $BAR_BLOCK_IDLE empty |$BAR_BLOCK_OFF| unavailable"
+printf "%+85s\n" "node usage: $legend"
+[ $WELLCOME_DISPLAY == 1 ] && printf "%+78s\n" "generated on $(date +"%Y-%m-%d %H:%M:%S")" || echo ""
