@@ -1828,14 +1828,6 @@ body {
 
   .page > div#quartz-body div.sidebar.left {
     border-right: 1px solid light-dark(rgb(211, 199, 187), rgb(36, 51, 71));
-    @media all and ($mobile) {
-      gap: 0.5rem;
-      display: flex;
-      flex-direction: column;
-      & div {
-        width: 100%;
-      }
-    }
   }
 
   a.external,

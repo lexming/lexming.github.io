@@ -42,3 +42,19 @@ body .page-title {
     font-size: 0;
   }
 }
+
+// rearrange title and search box in column (mobile)
+@media all and ($mobile) {
+  .page > div#quartz-body div.sidebar.left {
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    & div {
+      width: 100%;
+    }
+  }
+  .search {
+    max-width: 24rem;
+  }
+}
+
