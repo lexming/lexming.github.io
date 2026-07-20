@@ -3,7 +3,7 @@ title: Here we go again
 ---
 Welcome to my personal collection of technical notes about Linux system administration.
 
-The contents of *nth loop* grow organically and I do not guarantee any coherence among them. The goal is to consolidate information that was useful in the past and might be useful again to future me, saving yet another deep dive into the most obscure corners of the Internet. Format of posts is brief on purpose giving just the minimum context needed for future reference. Hopefully some structure will spontaneously emerge along the way.
+The contents of *nth loop* grow organically and I do not guarantee any coherence among them. The goal is to consolidate information that was useful in the past and might be useful again in the future, saving yet another deep dive into the most obscure corners of the Internet. Format of posts is brief on purpose giving just the minimum context needed for future reference. Hopefully some structure will spontaneously emerge along the way.
 
 # Clustered Domains
 
