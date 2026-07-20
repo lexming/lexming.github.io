@@ -32,6 +32,7 @@ export const defaultContentPageLayout: PageLayout = {
           grow: true,
         },
         { Component: Component.Darkmode() },
+	basis: "0",
       ],
     }),
     Component.Explorer(),
