@@ -53,20 +53,20 @@ body .page-title {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-  }
-  .flex-component {
-    flex-grow: 1;
-    order: 1;
-  }
-  .search {
-    max-width: 24rem;
-  }
-  .explorer {
-    order: 0;
-  }
-  .explorer-content {
-    top: auto;
-    margin-top: -10px;
+    & .flex-component {
+      flex-grow: 1;
+      order: 1;
+      & .search {
+        max-width: 24rem;
+      }
+    }
+    & .explorer {
+      order: 0;
+      & .explorer-content {
+        top: auto;
+        margin-top: -10px;
+      }
+    }
   }
 }
 
