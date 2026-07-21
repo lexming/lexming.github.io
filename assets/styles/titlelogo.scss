@@ -53,12 +53,12 @@ body .page-title {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    & div {
-      order: 1;
-    }
+  }
+  .flex-component {
+    flex-grow: 1;
+    order: 1;
   }
   .search {
-    flex-grow: 1;
     max-width: 24rem;
   }
   .explorer {
