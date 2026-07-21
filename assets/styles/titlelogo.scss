@@ -8,6 +8,8 @@ body .page-title {
   body .page-title {
     display: block;
     text-align: left;
+    width: 100%;
+    order: -1;
   }
   body .page-title > A::before {
     display: inline-block;
@@ -43,18 +45,28 @@ body .page-title {
   }
 }
 
-// rearrange title and search box in column (mobile)
+// on mobile, rearrange in two rows
+// first title; second explorer menu and search box
 @media all and ($mobile) {
   .page > div#quartz-body div.sidebar.left {
     gap: 0.5rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     & div {
-      width: 100%;
+      order: 1;
     }
   }
   .search {
+    flex-grow: 1;
     max-width: 24rem;
+  }
+  .explorer {
+    order: 0;
+  }
+  .explorer-content {
+    top: auto;
+    margin-top: -10px;
   }
 }
 
