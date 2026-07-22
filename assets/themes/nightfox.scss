@@ -1894,6 +1894,11 @@ body {
     color: light-dark(rgb(138, 92, 245), rgb(166, 138, 249));
   }
 
+  a.internal[role="anchor"] {
+    font-size: 80%;
+    font-style: italic;
+  }
+
   p {
     background-color: rgba(0, 0, 0, 0);
     color: light-dark(rgb(100, 63, 97), rgb(174, 175, 176));
