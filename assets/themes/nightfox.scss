@@ -2086,6 +2086,13 @@ body {
     color: light-dark(rgb(72, 141, 147), rgb(110, 189, 187));
   }
 
+  .page h1 a.internal::before,
+  .page h2 a.internal::before,
+  .page h3 a.internal::before,
+  .page h4 a.internal::before {
+    content: "\00A0"; /* NBSP */
+  }
+
   ul > li {
     color: light-dark(rgb(61, 43, 90), rgb(205, 206, 207));
     text-align: start;
