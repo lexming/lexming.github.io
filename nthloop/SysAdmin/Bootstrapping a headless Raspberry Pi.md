@@ -26,9 +26,9 @@ At this point, if you can login with SSH, your Raspberry Pi is running and conne
     ssh-copy-id -i .ssh/<some_id_rsa> username@<rpi-hostname-or-ip>
     ```
 
-2. Once you can login with your SSH key, disable SSH connections with password
+2. Once you can login with your SSH key, disable connections with password in the SSH daemon
 
-    ```shell showLineNumbers caption="/etc/ssh/sshd_config"
+    ```ssh-config showLineNumbers caption="/etc/ssh/sshd_config"
     PasswordAuthentication no
     ```
 
@@ -43,7 +43,7 @@ with Ethernet.
 1. Append the following settings to the boot configuration file to disable
    Wi-Fi and Bluetooth
 
-    ```shell showLineNumbers caption="/boot/config.txt"
+    ```ini showLineNumbers caption="/boot/config.txt"
     dtoverlay=disable-wifi
     dtoverlay=disable-bt
     ```
@@ -56,7 +56,7 @@ options.
 
 1. Append the following settings to the boot configuration file to disable the on-board audio (HDMI audio will still work if the video core driver is loaded)
 
-    ```shell showLineNumbers caption="/boot/config.txt"
+    ```ini showLineNumbers caption="/boot/config.txt"
     dtparam=audio=off
     ```
 
@@ -64,7 +64,7 @@ options.
 
 3. Append the following settings to the boot configuration file to switch off the HDMI ports and disable any framebuffers on boot:
 
-    ```shell showLineNumbers caption="/boot/config.txt"
+    ```ini showLineNumbers caption="/boot/config.txt"
     hdmi_ignore_hotplug=1
     max_framebuffers=0
     ```
@@ -75,14 +75,14 @@ The Raspberry Pi board has a [watchdog timer](https://en.wikipedia.org/wiki/Watc
 
 1. Append the following settings to the boot configuration file to enable the watchdog timer
 
-    ```shell showLineNumbers caption="/boot/config.txt"
+    ```ini showLineNumbers caption="/boot/config.txt"
     dtparam=watchdog=on
     ```
 
 2. Enable the watchdog service in [systemd](https://systemd.io/)
 
-    ```shell showLineNumbers caption="/etc/systemd/system.conf"
-    RuntimeWatchdogSec=15s  # hardware limitation of RPi
+    ```ini showLineNumbers caption="/etc/systemd/system.conf"
+    RuntimeWatchdogSec=15s  # RPi hardware limit
     RebootWatchdogSec=10min
     #KExecWatchdogSec=0
     WatchdogDevice=/dev/watchdog
@@ -93,17 +93,17 @@ The Raspberry Pi board has a [watchdog timer](https://en.wikipedia.org/wiki/Watc
    	
 3. Reload config and reboot
 
-    ```console
-    $ systemctl daemon-reload
-    $ systemctl reboot
+    ```shell
+    systemctl daemon-reload
+    systemctl reboot
     ```
 
 4. Check after boot that watchdog is active
 
-    ```console
-    # dmesg | grep watchdog
-    [    1.792121] bcm2835-wdt bcm2835-wdt: Broadcom BCM2835 watchdog timer
-    [    3.552959] systemd[1]: Using hardware watchdog 'Broadcom BCM2835 Watchdog timer', version 0, device /dev/watchdog
-    [    3.563591] systemd[1]: Set hardware watchdog to 15s.
+    ```shell
+    sudo dmesg | grep watchdog
+    : [[    1.792121] bcm2835-wdt bcm2835-wdt: Broadcom BCM2835 watchdog timer]
+    : [[    3.552959] systemd[1]: Using hardware watchdog 'Broadcom BCM2835 Watchdog timer', version 0, device /dev/watchdog]
+    : [[    3.563591] systemd[1]: Set hardware watchdog to 15s.]
     ```
 

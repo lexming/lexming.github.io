@@ -21,7 +21,7 @@ The first step is to obtain the source code of the package of your distribution.
 
 2. Install the source package
 
-   ```bash
+   ```shell
    rpm -i zstd-1.5.5-1.el9.src.rpm
    ```
 
@@ -76,7 +76,7 @@ Jump to `~/rpmbuild/SPECS/` which contains the _spec_ file of your RPM:
 
 3. Install the dependencies to build the RPM
 
-   ```bash
+   ```shell
    sudo dnf builddep zstd-1.5.5-1.el9.src.rpm
    ```
 
@@ -84,7 +84,7 @@ Jump to `~/rpmbuild/SPECS/` which contains the _spec_ file of your RPM:
 
 4. Rebuild the RPM package
 
-   ```bash
+   ```shell
    rpmbuild -bb zstd.spec |& tee rpm-build.log
    ```
 

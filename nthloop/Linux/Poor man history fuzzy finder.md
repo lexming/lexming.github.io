@@ -12,7 +12,7 @@ We can also make a very simple fuzzy finder by using `grep` in a recursive funct
 
 The following recursive function (called `rgrep`) picks the top pattern string in the argument list, executes `grep` on the input to match that pattern, shifts the arguments and passes the result to itself.
 
-```bash
+```shell
 function rgrep {
     if [ "$1" ]; then
         local pattern="$1"
@@ -28,14 +28,14 @@ function rgrep {
 
 The result is equivalent to performing a logical *AND* on all patterns with the command
 
-```console
-$ cat input.txt | grep 'pattern1' | grep 'pattern2' | grep 'pattern3'
+```shell
+cat input.txt | grep 'pattern1' | grep 'pattern2' | grep 'pattern3'
 ```
 
 But with a simpler syntax, similar to a fuzzy finder
 
-```console
-$ cat input.txt | rgrep 'pattern1' 'pattern2' 'pattern3'
+```shell
+cat input.txt | rgrep 'pattern1' 'pattern2' 'pattern3'
 ```
 
 ## History fuzzy finder
@@ -43,14 +43,14 @@ $ cat input.txt | rgrep 'pattern1' 'pattern2' 'pattern3'
 Our new command `rgrep` can be easily applied to any command that prints lists of results, such as `history`. For instance, I set `hgrep` as the following alias to easily find commands in
 my history log
 
-```console
-$ alias hgrep='history | rgrep'
+```shell
+alias hgrep='history | rgrep'
 ```
 
 > [!example] Execution of _hgrep_
 > ```console
 > $ hgrep dnf openssl
- > 611  dnf install openssl-devel
- > 623  sudo dnf autoremove openssl-devel
- > 1014  hgrep dnf openssl
+>    611  dnf install openssl-devel
+>    623  sudo dnf remove openssl-devel
+>   1014  hgrep dnf openssl
 > ```

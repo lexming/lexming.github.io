@@ -58,7 +58,7 @@ The hardest part is to get the patch file ready for your specific version of the
 
 4. Rebuild the kernel
 
-   ```bash
+   ```shell
    rpmbuild --define "buildid .lex.1" -bb kernel.spec |& tee kernel-build.log
    ```
 

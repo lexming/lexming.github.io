@@ -8,7 +8,9 @@ tags:
 I got the following error on a regular `find` command looking for files in the data directory of my [Nextcloud](https://nextcloud.com/) instance:
 
 ```shell
-$ find /media/nextcloud/ -name "potato"
+find /media/nextcloud/ -name "potato"
+```
+```
 find: File system loop detected; ‘/media/nextcloud/log’ is part of the same file system loop as ‘/media/nextcloud/’.
 find: File system loop detected; ‘/media/nextcloud/data’ is part of the same file system loop as ‘/media/nextcloud/’.
 find: File system loop detected; ‘/media/nextcloud/scripts’ is part of the same file system loop as ‘/media/nextcloud/’.
@@ -16,7 +18,7 @@ find: File system loop detected; ‘/media/nextcloud/scripts’ is part of the s
 
 Hitting a loop in that particular file system is very unexpected. Such loops are commonly caused by symbolic links pointing back to one of its parent folders (see example below) and I know that there are none in that mount at `/media/nextcloud` because [Nextcloud does not support symlinks](https://github.com/nextcloud/server/issues/28178).
 
-```text
+```
 .
 └── root_folder
     └── sub_folder_1
@@ -32,8 +34,8 @@ Hitting a loop in that particular file system is very unexpected. Such loops are
 The cause of this file system loop error in `/media/nextcloud` is that its 3 sub-folders `data`, `log` and `scripts` have the same inode number, which understandably tricks `find` into a file system loop.
 
 ```shell
-$ ls -i /media/nextcloud
-256 data  256 log  256 scripts
+ls -i /media/nextcloud
+: [256 data  256 log  256 scripts]
 ```
 
 **How can these folders share the same inode?** That's because the file system of this volume is [Btrfs](https://btrfs.wiki.kernel.org/) and each sub-folder `data`, `log` and `scripts` is a [Btrfs subvolume](https://btrfs.readthedocs.io/en/latest/Subvolumes.html)  and one important characteristic of Btrfs sub-volumes is that they all have the same [256 inode number](https://btrfs.readthedocs.io/en/latest/Subvolumes.html#inode-numbers).
@@ -51,7 +53,9 @@ The solution is to export an NFS mount for each of the Btrfs sub-volumes with th
 `fsid`, and mount each one of those separately on the client system:
 
 ```shell
-$ mount | grep nextcloud
+mount | grep nextcloud
+```
+```
 helios4:/cloud on /media/nextcloud type nfs4 (rw,noatime,vers=4.2)
 helios4:/cloud_data on /media/nextcloud/data type nfs4 (rw,noatime,vers=4.2)
 helios4:/cloud_log on /media/nextcloud/log type nfs4 (rw,noatime,vers=4.2)
@@ -62,10 +66,11 @@ The inodes of the sub-folders will still be the common 256, but `find` will no
 longer report file system loops as they will have a different _fsid_:
 
 ```shell
-$ ls -i /media/nextcloud/
-256 data  256 log  256 scripts
-$ find /media/nextcloud -name "potato"
-/media/nextcloud/scripts/potato
+ls -i /media/nextcloud/
+: [256 data  256 log  256 scripts]
+
+find /media/nextcloud -name "potato"
+: [/media/nextcloud/scripts/potato]
 ```
 
 ## References

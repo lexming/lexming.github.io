@@ -20,7 +20,7 @@ The `nm` command in GNU Linux is the common tool used to print all symbols found
 
 ### Shared libraries
 
-```bash
+```shell
 $ nm -D /usr/lib64/libc.so.6
 000000000001ac00 T a64l@@GLIBC_2.2.5
 00000000000016aa T abort@@GLIBC_2.2.5
@@ -32,7 +32,7 @@ The output of `nm` for a shared library shows all symbols defined or referenced 
 
 ### Static libraries
 
-```bash
+```shell
 $ nm -C /lib/gcc/x86_64-redhat-linux/15/libgcc.a
 
 _muldi3.o:
@@ -53,7 +53,7 @@ Finding which library in your system provides a given symbol can be simply done 
 
 ### Shared libraries
 
-```bash
+```shell
 fd '.*\.so$' /path/to/target/libdir -x bash -c \
     "nm -D --defined-only {} 2>/dev/null \
     | grep 'symbol_name' && echo '╰╴>>> found in: {}'"
@@ -62,7 +62,7 @@ ref: [stackoverflow.com](https://stackoverflow.com//questions/19916119/how-do-i-
 
 ### Static libraries
 
-```bash
+```shell
 fd '.*\.a$' /path/to/target/libdir -x bash -c \
     "nm --defined-only {} 2>/dev/null \
     | grep 'symbol_name' && echo '╰╴>>> found in: {}'"
@@ -75,7 +75,7 @@ Remove the `--defined-only` option from `nm` to find libraries referencing the g
 
 The first place to look are the library search paths defined in the active shell. GCC searches for linker files in the locations defined in `$LIBRARY_PATH`, while `$LD_LIBRARY_PATH` is used at runtime.
 
-```bash
+```shell
 IFS=:
 for libdir in $LD_LIBRARY_PATH; do
     echo "=== checking $libdir ..."

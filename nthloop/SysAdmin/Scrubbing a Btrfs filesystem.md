@@ -35,7 +35,7 @@ tags:
 
    Contents of `btrfs-scrub.timer` with fixed monthly execution (every 8th day at 5 AM)
 
-   ```text showLineNumbers caption="Contents of /etc/systemd/system/btrfs-scrub.timer"
+   ```ini showLineNumbers caption="Contents of /etc/systemd/system/btrfs-scrub.timer"
    [Unit]
    Description=Scrub btrfs filesystem, verify block checksums
    Documentation=man:btrfs-scrub

@@ -7,7 +7,7 @@ tags:
 ---
 Little regex to convert single-line `print` statements in Python 2 to `print()` in Python 3:
 
-```regex
+```awk
 s/print\s([^(\s].*)/print(\1)/g
 ```
 

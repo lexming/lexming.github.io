@@ -10,7 +10,7 @@ tags:
 
 The options of the NFS daemon in OMV can be set with the custom `OMV_NFSD_MOUNTDOPTS` variable. Once the change is done, it is necessary to _stage_ and _deploy_ the configuration with Salt to get that change translated into the actual configuration files of _nfsd_:
 
-```bash
+```shell
 omv-env set -- OMV_NFSD_MOUNTDOPTS "--no-nfs-version 3"
 omv-salt stage run prepare
 omv-salt deploy run nfs

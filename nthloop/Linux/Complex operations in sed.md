@@ -10,7 +10,7 @@ tags:
 
 A single `sed` execution can run any number of _sed commands_ on the input text. The commands in the sequence are separated by semi-colons
 
-```bash
+```shell
 sed 'command1;command2;command3'
 ```
 
@@ -37,7 +37,7 @@ Sequences of commands are independent, each one applies to the complete text inp
 
 Commands in _sed_ can be grouped in blocks that apply to same the _pattern space_. Those sequence of commands are separated by semi-colons and encapsulated in curly braces `{}`.
 
-```bash
+```shell
 sed '/pattern/{command1;command2}'
 ```
 

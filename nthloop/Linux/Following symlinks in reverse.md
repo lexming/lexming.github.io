@@ -13,12 +13,9 @@ For instance, assume that we have the following file structure where `active_pro
 .
 ├── data
 │   ├── project1
-│   │   ├── 01-01.csv
-│   │   ├── 01-02.csv
-│   │   └── 01-03.csv
+│   │   └── 01-some-file.csv
 │   └── project2
-│       ├── 02-aa.csv
-│       └── 02-ab.csv
+│       └── 02-other-file.csv
 └── active_project -> data/project2
 ```
 
@@ -26,24 +23,24 @@ For instance, assume that we have the following file structure where `active_pro
 
 Once we change directory into `active_project` (symlink), the commands `ls` and `cd` will interpret `..` (_the parent folder_) differently and show different contents in the parent of `active_project`:
 
-```bash
-$ cd active_project/
+```shell
+cd active_project/
 
-$ ls ..
-project1  project2
+ls ..
+: [project1  project2]
 
-$ (cd .. && ls)
-data  active_project
+(cd .. && ls)
+: [data  active_project]
 ```
 
 The command `ls` shows the contents of the parent folder of the _real_ working directory `data/project2`. Conversely, `cd` shows the contents of the parent of the symlink itself `active_project`. This different outcome is due the different type of program behind these two commands.
 
 * The command `cd` is a *built-in command* in bash and as such, it works with the path reported by `pwd`, which is aware of the actual file path followed by the user in this shell environment in the past. Hence, `cd` will follow the symlink backwards.
-* The command `ls` is a standalone application and it works with the real path or physical path of the current folder. It does not have any knowledge of what happened in this shell environment in the past.
+* The command `ls` is a standalone application and it works with the real path (or physical path) of the current folder. It does not have any knowledge of what happened in this shell environment in the past.
 
 ## Completion of commands
 
-TAB completion can also behave differently depending on the default settings of bash in your Linux distribution or if extra [bash completions](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html) are included. The built-in completion for `cd` in bash should follow the symlink on `..` backwards, as `cd` does on execution. If that's not the case, an external bash completion might be interfering. You can switch back to the built-in completion for `cd` with the following command in your `.bashrc`:
+TAB completion can also behave differently depending on the default settings of bash in your Linux distribution or if extra [bash completions](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html) are included. The built-in completion for `cd` in bash should follow the symlink on `..` backwards, same behaviour as `cd` on execution. If that's not the case, an external bash completion might be interfering. You can switch back to the built-in completion for `cd` with the following command in your `.bashrc`:
 
 ```shell showLineNumbers caption="Remove completion for cd"
 complete -r cd
