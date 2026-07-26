@@ -59,7 +59,7 @@ This issue can be improved by escaping the _special_ characters in the filenames
 
 ```shell
 printf "%q" "file 'quotes' and spaces.txt"
-  file\ \'quotes\'\ and\ spaces.txt
+: [➥] file\ \'quotes\'\ and\ spaces.txt
 ```
 
 Therefore, we can try to escape all arguments passed by `find` to the sub-shell. We first create a command that escapes the filenames into a variable called `$protname` and then executes `ls` on those protected filenames:
