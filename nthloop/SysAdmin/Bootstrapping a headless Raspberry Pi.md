@@ -102,8 +102,8 @@ The Raspberry Pi board has a [watchdog timer](https://en.wikipedia.org/wiki/Watc
 
     ```shell
     sudo dmesg | grep watchdog
-    : [[    1.792121] bcm2835-wdt bcm2835-wdt: Broadcom BCM2835 watchdog timer]
-    : [[    3.552959] systemd[1]: Using hardware watchdog 'Broadcom BCM2835 Watchdog timer', version 0, device /dev/watchdog]
-    : [[    3.563591] systemd[1]: Set hardware watchdog to 15s.]
+    : [➥] [    1.792121] bcm2835-wdt bcm2835-wdt: Broadcom BCM2835 watchdog timer
+    : [➥] [    3.552959] systemd[1]: Using hardware watchdog 'Broadcom BCM2835 Watchdog timer', version 0, device /dev/watchdog
+    : [➥] [    3.563591] systemd[1]: Set hardware watchdog to 15s.
     ```
 

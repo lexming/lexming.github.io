@@ -13,22 +13,22 @@ Single quotes within the double quotes as the leading string encapsulation have 
 
 ```shell caption="Single quotes within leading double quotes"
 result=42; echo "The quoted result is '$result'"
-: [The quoted result is '42']
+: [➥] The quoted result is '42'
 result=42; echo "The quoted result is ''$result''"
-: [The quoted result is ''42'']
+: [➥] The quoted result is ''42''
 echo "The quoted hostname is '`hostname`'"
-: [The quoted hostname is 'myhost']
+: [➥] The quoted hostname is 'myhost'
 echo "The quoted hostname is '$(hostname)'"
-: [The quoted hostname is 'myhost']
+: [➥] The quoted hostname is 'myhost'
 ```
 
 Double quotes within leading double quotes is already a bit tricky
 
 ```shell caption="Doubles quotes within double quotes"
 result=42; echo "The quoted result is "$result""
-: [The quoted result is 42]
+: [➥] The quoted result is 42
 echo "The quoted hostname is "$(hostname)""
-: [The quoted hostname is myhost]
+: [➥] The quoted hostname is myhost
 ```
 
 The second time a double quote is found, it closes the first ones opening the string. So the previous example is interpreted as _string_ + _substitution_ + _empty string_.
@@ -38,13 +38,13 @@ Printing a `"` character with leading double quotes requires to either use singl
 ```shell caption="Solution to doubles quotes within double quotes"
 # WRONG: string + $result + empty string ("")
 result=42; echo "The quoted result is "$result""
-: [The quoted result is 42]
+: [➥] The quoted result is 42
 # CORRECT: string + quoted double quote ('"') + variable + ('"')
 result=42; echo "The quoted result is "'"'$result'"'
-: [The quoted result is "42"]
+: [➥] The quoted result is "42"
 # CORRECT: string with escaped double quotes
 result=42; echo "The quoted result is \"$result\""
-: [The quoted result is "42"]
+: [➥] The quoted result is "42"
 ```
 
 ## Leading single quotes
@@ -53,11 +53,11 @@ Single quotes have the special meaning of treating all encapsulated characters a
 
 ```shell caption="Double quotes within leading single quotes"
 result=42; echo 'The quoted result is "$result"'
-: [The quoted result is "$result"]
+: [➥] The quoted result is "$result"
 result=42; echo 'The quoted result is \"$result\"'
-: [The quoted result is \"$result\"]
+: [➥] The quoted result is \"$result\"
 echo 'The quoted hostname is "$(hostname)"'
-: [The quoted hostname is "$(hostname)"]
+: [➥] The quoted hostname is "$(hostname)"
 ```
 
 In this case, the solution is to close the single quotes before the substitution.
@@ -65,7 +65,7 @@ In this case, the solution is to close the single quotes before the substitution
 ```shell caption="Solution to double quotes within leading single quotes"
 # string (including " quotes) + variable + string (including " quotes)
 result=42; echo 'The quoted result is "'$result'"'
-: [The quoted result is "42"]
+: [➥] The quoted result is "42"
 ```
 
 Printing a `'` character with leading single quotes cannot be done, the second `'` will always be interpreted as the closing single quote. Even if it is escaped, as the escape character is a literal backslash. Therefore, the solution requires closing the single quotes as well and printing the single quote within another context.
@@ -73,11 +73,11 @@ Printing a `'` character with leading single quotes cannot be done, the second `
 ```shell caption="Solution to single quotes within leading single quotes"
 # WRONG: string + variable + empty string
 result=42; echo 'The quoted result is '$result''
-: [The quoted result is 42]
+: [➥] The quoted result is 42
 # WRONG: string (including a backslash) + variable + empty string
 result=42; echo 'The quoted result is \'$result''
-: [The quoted result is \42]
+: [➥] The quoted result is \42
 # CORRECT: single quoted string + double quoted string (including ' quotes)
 result=42; echo 'The quoted result is '"'$result'"
-: [The quoted result is '42']
+: [➥] The quoted result is '42'
 ```

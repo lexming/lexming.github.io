@@ -27,10 +27,10 @@ Once we change directory into `active_project` (symlink), the commands `ls` and 
 cd active_project/
 
 ls ..
-: [project1  project2]
+: [➥] project1  project2
 
 (cd .. && ls)
-: [data  active_project]
+: [➥] data  active_project
 ```
 
 The command `ls` shows the contents of the parent folder of the _real_ working directory `data/project2`. Conversely, `cd` shows the contents of the parent of the symlink itself `active_project`. This different outcome is due the different type of program behind these two commands.

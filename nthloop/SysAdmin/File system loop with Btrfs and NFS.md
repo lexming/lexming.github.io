@@ -35,7 +35,7 @@ The cause of this file system loop error in `/media/nextcloud` is that its 3 sub
 
 ```shell
 ls -i /media/nextcloud
-: [256 data  256 log  256 scripts]
+: [➥] 256 data  256 log  256 scripts
 ```
 
 **How can these folders share the same inode?** That's because the file system of this volume is [Btrfs](https://btrfs.wiki.kernel.org/) and each sub-folder `data`, `log` and `scripts` is a [Btrfs subvolume](https://btrfs.readthedocs.io/en/latest/Subvolumes.html)  and one important characteristic of Btrfs sub-volumes is that they all have the same [256 inode number](https://btrfs.readthedocs.io/en/latest/Subvolumes.html#inode-numbers).
@@ -67,10 +67,10 @@ longer report file system loops as they will have a different _fsid_:
 
 ```shell
 ls -i /media/nextcloud/
-: [256 data  256 log  256 scripts]
+: [➥] 256 data  256 log  256 scripts
 
 find /media/nextcloud -name "potato"
-: [/media/nextcloud/scripts/potato]
+: [➥] /media/nextcloud/scripts/potato
 ```
 
 ## References
