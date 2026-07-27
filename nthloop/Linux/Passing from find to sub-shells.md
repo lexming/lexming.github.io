@@ -32,7 +32,7 @@ find . -type f -exec ls {} \;
 More complex operations than a single command such as `ls` might need to launch a sub-shell and pass those filenames to it as arguments, which might bring trouble.
 
 > [!info] 
-> In the following examples I keep using a simple `ls` command in the _bash_ sub-shell, but that can be a script of any complexity.
+> In the following examples I keep using a simple `ls` command in the `bash` sub-shell, but that can be a script of any complexity.
 
 ```shell
 find . -type f -exec bash -c 'ls {}' \;
@@ -106,7 +106,7 @@ find . -type f -exec bash -c "$cmd" \;
 ls: cannot access './file double and spaces.txt': No such file or directory
 ```
 
-Now we managed to hit 3 of 4 targets. Which is an improvement, but it still fails on the filename with double quotes. This failure is caused by the double quotes used in the `printf` command to handle the arguments from _find_ in `"{}"`. They become the leading quotes of the argument string and following the [[Mixing quotes in Bash|quote parsing convention in bash]], any additional double quotes in the argument itself will be paired with the leading quotes; making them disappear from the output string.
+Now we managed to hit 3 of 4 targets. Which is an improvement, but it still fails on the filename with double quotes. This failure is caused by the double quotes used in the `printf` command to handle the arguments from `find` in `"{}"`. They become the leading quotes of the argument string and following the [[Mixing quotes in Bash|quote parsing convention in bash]], any additional double quotes in the argument itself will be paired with the leading quotes; making them disappear from the output string.
 
 Replacing the double quotes with single quotes just shifts the issue to another case. Removing the quotes is not an option either, as the arguments passed into `printf` are not escaped.
 
@@ -114,7 +114,7 @@ The real problem with this approach is that the variable substitution happens be
 
 ### Properly passing arguments to sub-shells
 
-The solution to the previous issues is to properly pass the results of the _find_ command as actual arguments of the sub-shell.
+The solution to the previous issues is to properly pass the results of the `find` command as actual arguments of the sub-shell.
 
 ```shell
 find . -type f -exec bash -c 'ls "$@"' _ {} \;

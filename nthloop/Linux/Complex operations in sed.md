@@ -35,13 +35,13 @@ Sequences of commands are independent, each one applies to the complete text inp
 
 ## Operations within a match
 
-Commands in _sed_ can be grouped in blocks that apply to same the _pattern space_. Those sequence of commands are separated by semi-colons and encapsulated in curly braces `{}`.
+Commands in `sed` can be grouped in blocks that apply to same the _pattern space_. Those sequence of commands are separated by semi-colons and encapsulated in curly braces `{}`.
 
 ```shell
 sed '/pattern/{command1;command2}'
 ```
 
-Command blocks in _sed_ allow to perform more complex operations in the matching text than just using the simple built-in commands. We can use different patterns for selecting lines of text and for making substitutions. For instance, consider the following sample text:
+Command blocks in `sed` allow to perform more complex operations in the matching text than just using the simple built-in commands. We can use different patterns for selecting lines of text and for making substitutions. For instance, consider the following sample text:
 
     1 Lorem ipsum dolor sit amet consectetur
     2 adipiscing elit. Quisque faucibus ex
