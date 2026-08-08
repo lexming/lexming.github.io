@@ -3061,6 +3061,11 @@ body {
     border-bottom-right-radius: 4px;
   }
 
+  .page-footer p.article-license img {
+    vertical-align: bottom;
+    margin-bottom: 0.5ex;
+  }
+
   footer {
     background-color: light-dark(rgb(234, 227, 220), rgb(21, 29, 40));
     color: light-dark(rgb(100, 63, 97), rgb(174, 175, 176));
