@@ -2051,17 +2051,17 @@ body {
   }
 
   hr {
-    border-color: rgb(128, 128, 128)
-      light-dark(rgb(211, 199, 187), rgb(36, 51, 71))
-      light-dark(rgb(211, 199, 187), rgb(36, 51, 71));
-    border-style: solid solid none none;
-    border-width: 0px 1px 0px 0px;
-    box-shadow: none;
+    border-top: solid 1px var(--footnote-divider-color);
+    background-color: transparent;
     margin: 0px;
     margin-block-end: 32px;
     margin-block-start: 32px;
     margin-inline-end: 0px;
     margin-inline-start: 0px;
+  }
+
+  div.center hr {
+    border-top: dashed 2px var(--footnote-divider-color);
   }
 
   a.internal.tag-link,
@@ -3064,13 +3064,7 @@ body {
   footer {
     background-color: light-dark(rgb(234, 227, 220), rgb(21, 29, 40));
     color: light-dark(rgb(100, 63, 97), rgb(174, 175, 176));
-    border-color: light-dark(rgb(211, 199, 187), rgb(36, 51, 71));
-    border-style: solid;
-    border-width: 1px 0px 0px 1px;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-style: none;
   }
 
   footer ul li a {

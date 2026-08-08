@@ -22,6 +22,9 @@ export const defaultContentPageLayout: PageLayout = {
     Component.ContentMeta(),
     Component.TagList(),
   ],
+  afterBody: [
+    Component.ArticleFooter(),
+  ],
   left: [
     Component.PageTitle(),
     Component.Flex({
@@ -47,7 +50,11 @@ export const defaultContentPageLayout: PageLayout = {
 
 // components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [
+      Component.Breadcrumbs(),
+      Component.ArticleTitle(),
+      Component.ContentMeta(),
+  ],
   left: [
     Component.PageTitle(),
     Component.MobileOnly(Component.Spacer()),
