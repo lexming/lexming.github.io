@@ -21,3 +21,6 @@
 * [[Mirrorless camera as webcam in Linux]]
 * [[Terminal padding in KDE Konsole]]
 * [[Disable meta key on KDE App Launcher]]
+
+## Nextcloud
+* [[Image previews on a small nextcloud server]]
