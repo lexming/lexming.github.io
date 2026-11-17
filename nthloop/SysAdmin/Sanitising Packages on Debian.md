@@ -1,3 +1,11 @@
+---
+title: Sanitising Packages on Debian
+created: 2026-11-01
+modified: 2021-11-01
+tags:
+  - debian
+---
+
 The longer a system runs the more likely it will accumulate _broken_ or _undesired_ package installations. Even if you use some [IaC](https://en.wikipedia.org/wiki/Infrastructure_as_code) solution, some stuff might not be properly cleaned-up and just stay.
 
 In my case this mostly happens on system upgrades to a new major [Debian release](https://www.debian.org/releases/). I do not flash the new system on the boot device, which is a hassle as that requires physically manipulating the SBC and a longer downtime. So I push the update live and deal with any package conflicts and configuration updates on-the-fly. Then I restart services one-by-one and once everything is clean and consistent, the system reboots.

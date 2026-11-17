@@ -6,19 +6,23 @@ tags:
   - radxa
   - bootstrap
   - armbian
+  - debian
 ---
-# System image
+
+## System Image
 
 Official images from Radxa:
+
 * based on Debian 11 and Debian 12
-* :luc_link: https://github.com/radxa-build/rock-4se
+* :luc_link: <https://github.com/radxa-build/rock-4se>
 
 Armbian images:
+
 * based on Debian 13 and Ubuntu 26.04
 * community support
-* :luc_link: https://armbian.com/boards/rock-4se
+* :luc_link: <https://armbian.com/boards/rock-4se>
 
-## eMMC module
+## eMMC Module
 
 ![[2026-10-30-radxa_emmc_adapter.webp]]
 
@@ -27,11 +31,11 @@ Radxa 4SE has a slot for a [eMMC module]([https://radxa.com/products/accessories
 * [Radxa docs on eMMC/UFS system](https://docs.radxa.com/en/rock4/rock4d/getting-started/install-system/ufs-system/ufs_reader)
 
 > [!warning]
-> Do not confuse UFS with eMMC, they are different memory formats and have different requirements. UFS needs specific images with 4096 block size, while eMMC can use the *generic* images for SD cards with 512 block size.
+> Do not confuse UFS with eMMC, they are different memory formats and have different requirements. UFS needs specific images with 4096 block size, while eMMC can use the _generic_ images for SD cards with 512 block size.
 
 Flashing the eMMC device using a [Framework SD expansion card](https://frame.work/be/en/products/sd-expansion-card) did not work:
 
-```
+```shell
 [  740.079936] usb-storage 2-4:1.0: USB Mass Storage device detected
 [  740.080044] scsi host10: usb-storage 2-4:1.0
 [  741.107831] scsi 10:0:0:0: Direct-Access     Generic  MassStorageClass 0002 PQ: 0 ANSI: 6
@@ -51,7 +55,7 @@ Flashing the eMMC device using a [Framework SD expansion card](https://frame.wor
 
 Surprisingly, a simple USB adapter from SanDisk does work:
 
-```
+```shell
 [ 1461.581292] usb-storage 3-4:1.0: USB Mass Storage device detected
 [ 1461.581378] scsi host10: usb-storage 3-4:1.0
 [ 1463.472183] scsi 10:0:0:0: Direct-Access     Mass     Storage Device        PQ: 0 ANSI: 0 CCS
@@ -70,7 +74,7 @@ $ dd if=/dev/sdc of=/dev/null bs=512 count=1 status=progress
 512 bytes copied, 0.0033591 s, 152 kB/s
 ```
 
-## First boot
+## First Boot
 
 I flashed the Armbian system image onto the eMMC module. Installing the module on the Radxa 4SE board is a simple push and click of the module onto the corresponding socket.
 

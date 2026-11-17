@@ -4,8 +4,10 @@ created: 2022-07-09
 modified: 2022-07-09
 tags:
   - debian
+  - bootstrap
 ---
-The `rpi-manager` from [Raspberry Pi OS](https://www.raspberrypi.com/software/) allows to easily bootstrap a Raspberry Pi into a working system in your network with no other interaction than inserting the SD card and powering the device. No peripherals and no display needed. 
+
+The `rpi-manager` from [Raspberry Pi OS](https://www.raspberrypi.com/software/) allows to easily bootstrap a Raspberry Pi into a working system in your network with no other interaction than inserting the SD card and powering the device. No peripherals and no display needed.
 
 1. Insert a blank SD card in your computer and launch `rpi-imager`
 2. Select the OS image for your Raspberry Pi
@@ -13,12 +15,12 @@ The `rpi-manager` from [Raspberry Pi OS](https://www.raspberrypi.com/software/) 
     * Enable SSH
     * Set a custom username and password
 4. Write the image into the SD card, insert the card into your Raspberry Pi and boot it up.
-5. The Raspberry Pi will get its IP address by DHCP. Check your network router to get its IP. 
+5. The Raspberry Pi will get its IP address by DHCP. Check your network router to get its IP.
 6. Connect with SSH using your user/password
 
 At this point, if you can login with SSH, your Raspberry Pi is running and connected. The following are some optional configurations that I usually apply to the Raspberry Pis in my network.
 
-## Key-based SSH authentication
+## Key-based SSH Authentication
 
 1. Copy your SSH key to the Raspberry Pi
 
@@ -32,12 +34,13 @@ At this point, if you can login with SSH, your Raspberry Pi is running and conne
     PasswordAuthentication no
     ```
 
-## Disable radios
+## Disable Radios
 
 Wi-Fi and Bluetooth might not be necessary if your Raspberry Pi is connected
+
 with Ethernet.
 
->[!info]
+> [!info]
 > The boot configuration file is located at `/boot/config.txt` in Raspberry Pi OS (Raspbian) or `/boot/firmware/config.txt` in Ubuntu.
 
 1. Append the following settings to the boot configuration file to disable
@@ -51,7 +54,9 @@ with Ethernet.
 ## Disable audio/video
 
 Audio and video are usually not needed on a headless system. On-board audio,
+
 HDMI output and video acceleration can be disabled with boot configuration
+
 options.
 
 1. Append the following settings to the boot configuration file to disable the on-board audio (HDMI audio will still work if the video core driver is loaded)
@@ -69,7 +74,7 @@ options.
     max_framebuffers=0
     ```
 
-## Enable a watchdog
+## Enable a Watchdog
 
 The Raspberry Pi board has a [watchdog timer](https://en.wikipedia.org/wiki/Watchdog_timer). This can be used to automatically reboot the system in case of problems. For instance, if the system hangs or crashes due to out-of-memory errors.
 
@@ -88,9 +93,9 @@ The Raspberry Pi board has a [watchdog timer](https://en.wikipedia.org/wiki/Watc
     WatchdogDevice=/dev/watchdog
     ```
 
-    >[!note]
+    > [!note]
     > The watchdog timer in the Raspberry Pi is limited to 15 seconds (max) by hardware
-   	
+
 3. Reload config and reboot
 
     ```shell
@@ -106,4 +111,3 @@ The Raspberry Pi board has a [watchdog timer](https://en.wikipedia.org/wiki/Watc
     : [➥] [    3.552959] systemd[1]: Using hardware watchdog 'Broadcom BCM2835 Watchdog timer', version 0, device /dev/watchdog
     : [➥] [    3.563591] systemd[1]: Set hardware watchdog to 15s.
     ```
-
