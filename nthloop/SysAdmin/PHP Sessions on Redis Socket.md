@@ -6,6 +6,7 @@ tags:
   - php
   - redis
 ---
+
 The recent vulnerability for PHP called [phpAfterShell](https://depthfirst.com/phpaftershell) (CVE-2026-126714) can lead to unauthenticated RCE by exploiting a bug on PHP's default file-based sessions.
 
 I want to avoid this issue altogether by switching from files to [Redis](https://github.com/redis/redis) as session handler in my PHP servers. I already have Redis running as [cache layer of Nextcloud](https://docs.nextcloud.com/server/stable/admin_manual/configuration_server/caching_configuration.html) and it should bring some gain in performance _for free_ as well (probably negligible as load is usually low, but who can refuse more speed?). I won't try to use a database as I want to avoid any unnecessary load on the MariaDB used by my Nextcloud.
@@ -55,11 +56,25 @@ We just need to define a target database in Redis and some prefix to enable Redi
    session.use_strict_mode = 1
    ```
 
-5. I recommend enabling locking in php-redis to avoid collisions. Append the following parameters at the end of `php.ini`
+5. Enable session locking in php-redis to avoid collisions and prevent session corruption. The following parameters are the [recommended locking settings from Nextcloud](https://docs.nextcloud.com/server/stable/admin_manual/configuration_server/caching_configuration.html#using-the-redis-session-handler). Append them at the end of `php.ini`
 
    ```php
    [redis]
-   redis.session.locking_enabled = 1
-   redis.session.lock_retries = 10
-   redis.session.lock_wait_time = 15000
+   redis.session.locking_enabled=1
+   redis.session.lock_retries=-1
+   redis.session.lock_wait_time=10000
    ```
+
+6. Restart php-fpm service
+
+   ```console
+   systemctl restart php-fpm.service
+   ```
+
+## Verification
+
+Once PHP-FPM is restarted successfully, PHP session keys should start to populate Redis. Check the presence of those keys with the command
+
+```console
+redis-cli -s /var/run/redis/redis.sock -n 1 KEYS 'PHP_SESSION:*'
+```
