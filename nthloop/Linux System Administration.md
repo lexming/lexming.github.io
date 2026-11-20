@@ -32,3 +32,4 @@
 ## Nextcloud
 
 * [[Image previews on a small nextcloud server]]
+* [[PHP Sessions on Redis Socket]]
