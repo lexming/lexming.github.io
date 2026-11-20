@@ -1,7 +1,7 @@
 ---
 title: Radxa 4SE Bootstrap
 created: 2026-10-30
-modified: 2021-10-30
+modified: 2026-10-30
 tags:
   - radxa
   - bootstrap
